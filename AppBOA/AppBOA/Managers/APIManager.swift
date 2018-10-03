@@ -29,26 +29,20 @@ class APIManager {
             return
         }
         //let headers = createAuthorizationHeaders(user: username, password: password)
-        let baseURL = Constants.API.ServiceBaseServer + "/GetAlertasAgrupadas/"
+        let baseURL = Constants.API.ServiceBaseServer + "/GetAlertasAgrupadas"
         let parameters: Parameters = [ "credenciales": "", "empleadoID": "277"]
         
         Alamofire.request(baseURL, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .validate(statusCode: 200..<300)
-            .responseObject { (response: DataResponse<Alert>) in
-                if response.error != nil {
-                    failure(nil)
-                }
-                else {
-                    guard let alert = response.value else {
-                        failure(nil)
-                        return
+            .validate(statusCode: 200..<300).response { (response) in
+                if let data = response.data {
+                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any] {
+                        if (json["GetAlertasAgrupadasResult"] as? Array<AnyObject>)?.count != 0 {
+                            let json1 = json["GetAlertasAgrupadasResult"] as? String
+                            
+                            
+                            print(json1)
+                        }
                     }
-                    /*UserDefaults.standard.set(brand.serverRoot, forKey: "BaseURL")
-                    self.login(username: username, password: password, code: code, success: {
-                        success()
-                    }, failure: { (serverError) in
-                        failure(nil)
-                    })*/
                 }
         }
     }

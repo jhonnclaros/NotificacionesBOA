@@ -17,6 +17,8 @@ class Alert: Object, Mappable {
     @objc dynamic var serverRoot: String?
     var headers: List<String> = List<String>()
     var links: List<String> = List<String>()
+ 
+    //var GetAlertasAgrupadasResult: String?
     
     required convenience init?(map: Map) {
         self.init()
