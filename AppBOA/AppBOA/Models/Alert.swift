@@ -15,9 +15,9 @@ import ObjectMapperAdditions
 class Alert: Object, Mappable {
     
     @objc dynamic var rowNum: Int = 0
-    /*@objc dynamic var empleadoID: Int = 0
+    @objc dynamic var empleadoID: Int = 0
     @objc dynamic var titulo: String?
-    @objc dynamic var descripcionCorta: String?
+    /*@objc dynamic var descripcionCorta: String?
     @objc dynamic var sistemaOrigen: String?
     @objc dynamic var sistemaId: Int = 0
     @objc dynamic var cantAlertas: Int = 0
@@ -49,5 +49,10 @@ class Alert: Object, Mappable {
         fecha <- map["Fecha"]
         estadoAlertaId <- map["EstadoAlertaId"]
         tipo <- map["Tipo"]*/
+    }
+    
+    convenience init(alert: [String: Any]) {
+        self.init()
+        self.titulo = alert["Titulo"] as? String
     }
 }

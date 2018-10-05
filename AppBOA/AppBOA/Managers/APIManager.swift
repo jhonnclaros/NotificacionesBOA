@@ -37,6 +37,8 @@ class APIManager {
             .responseObject { (response: DataResponse<Lista>) in
                 if response.error != nil {
                     print(response.result.value ?? nil)
+                    var alerts = response.result.value
+                    print(alerts)
                 }
         }
             /*.validate(statusCode: 200..<300).response { (response) in

@@ -29,7 +29,7 @@ class Lista: Object, Mappable {
      headers <- (map["headers"], RealmTypeCastTransform())
      links <- (map["_links"], RealmTypeCastTransform())
      }*/
-    //var lista: List<Alert> = List<Alert>()
+    var lista: [Alert] = []
     @objc dynamic var totalRegistros: Int = 0
     @objc dynamic var codigo: Int = 0
     @objc dynamic var mensaje: String?
@@ -37,13 +37,32 @@ class Lista: Object, Mappable {
     required convenience init?(map: Map) {
         self.init()
         //mapping(map: map)
-        mapping(map: map.JSON["GetAlertasAgrupadasResult"] )
+        mapping(map: map)
     }
     
     func mapping(map: Map) {
-        //lista <- (map["lista"], RealmTypeCastTransform())
-        totalRegistros <- map["totalRegistros"]
-        codigo <- map["codigo"]
-        mensaje <- map["mensaje"]
+        let map1 = map.JSON["GetAlertasAgrupadasResult"] as! String
+        let data = map1.data(using: .utf8)!
+        do{
+            let output = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
+            print ("\(String(describing: output))")
+            totalRegistros = output!["totalRegistros"] as! Int
+            codigo = output!["codigo"] as! Int
+            mensaje = output!["totalRegistros"] as? String
+            lista = getAlertList(data: (output!["lista"] as? [[String: Any]])!)
+        }
+        catch {
+            print (error)
+        }
+        
+    }
+    
+    func getAlertList(data: [[String: Any]]) -> [Alert] {
+        var alertList: [Alert] = []
+        for alert in data {
+            alertList.append(Alert(alert: alert))
+            //alertList.append(alert)
+        }
+        return alertList
     }
 }
