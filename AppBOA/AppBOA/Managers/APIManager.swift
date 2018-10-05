@@ -33,18 +33,29 @@ class APIManager {
         let parameters: Parameters = [ "credenciales": "", "empleadoID": "277"]
         
         Alamofire.request(baseURL, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .validate(statusCode: 200..<300).response { (response) in
+            .validate(statusCode: 200..<300)
+            .responseObject { (response: DataResponse<Lista>) in
+                if response.error != nil {
+                    print(response.result.value ?? nil)
+                }
+        }
+            /*.validate(statusCode: 200..<300).response { (response) in
                 if let data = response.data {
                     if let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any] {
                         if (json["GetAlertasAgrupadasResult"] as? Array<AnyObject>)?.count != 0 {
-                            let json1 = json["GetAlertasAgrupadasResult"] as? String
+                            let jsonWithoutResult = json["GetAlertasAgrupadasResult"] as? String
                             
+                            print(jsonWithoutResult as Any)
                             
-                            print(json1)
+                            /*if let jsonLista = try? JSONSerialization.jsonObject(with: jsonWithoutResult, options: []) as! [String: Any]{
+                                let jsonWithoutLista = jsonLista["lista"] as? String
+                                
+                                print(jsonWithoutLista as Any)
+                            }*/
                         }
                     }
                 }
-        }
+        }*/
     }
     
     /*static func login(username: String, password: String, code: String, success:@escaping () -> (), failure:@escaping (_ error: ServerError?) -> ()) {
