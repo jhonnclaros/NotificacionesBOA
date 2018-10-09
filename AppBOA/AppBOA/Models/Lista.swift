@@ -41,8 +41,8 @@ class Lista: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        let map1 = map.JSON["GetAlertasAgrupadasResult"] as! String
-        let data = map1.data(using: .utf8)!
+        let mapAlert = map.JSON["GetAlertasAgrupadasResult"] as! String
+        let data = mapAlert.data(using: .utf8)!
         do{
             let output = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
             print ("\(String(describing: output))")

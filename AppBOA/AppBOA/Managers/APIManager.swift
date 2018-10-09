@@ -23,7 +23,7 @@ class APIManager {
         return (url?.absoluteString)!
     }*/
 
-    static func getListAlerts(username: String, success:@escaping () -> (), failure:@escaping (_ error: ServerError?) -> ()) {
+    static func getListAlerts(username: String, success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
         if !ReachabilityManager.shared.isNetworkAvailable {
             failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
             return
@@ -36,9 +36,10 @@ class APIManager {
             .validate(statusCode: 200..<300)
             .responseObject { (response: DataResponse<Lista>) in
                 if response.error != nil {
-                    print(response.result.value ?? nil)
+                    //print(response.result.value ?? nil)
                     var alerts = response.result.value
                     print(alerts)
+                    success(alerts?.lista ?? [])
                 }
         }
             /*.validate(statusCode: 200..<300).response { (response) in
