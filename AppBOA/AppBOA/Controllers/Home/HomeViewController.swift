@@ -18,23 +18,24 @@ class HomeViewController: UITableViewController {
     
     @IBOutlet weak var receiveView: UIView!
     @IBOutlet var tableViewAlerts: UITableView!
-    
+    var alerts = [Alert]()
+    var selectedAlert: Alert?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        loadData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    fileprivate func setupUI() {
+    fileprivate func loadData() {
         title = "Inicio"
         APIManager.getListAlerts(username: "jhonn.claros", success: { (alerts: [Alert]) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            //UserDefaults.standard.setValue(self.usernameTextField.text!, forKey: "username")
-            //UserDefaults.standard.setValue(self.codeTextField.text!, forKey: "accessCode")
-            //AppDelegate.getDelegate().segueToHomeViewController()
+            self.alerts = alerts
+            self.tableView.reloadData()
             
             
         }, failure: { (error) in
@@ -43,7 +44,7 @@ class HomeViewController: UITableViewController {
             var titleMessage = Constants.Error.ErrorInternalServerTitle
             if error != nil {
                 errorMessage = (error?.desc)!
-                titleMessage = "ScanIt"
+                titleMessage = "AppBoa"
             }
             AlertManager.showAlert(from: self, title: titleMessage, message: errorMessage, buttonStyle: .default)
         })
@@ -60,5 +61,37 @@ class HomeViewController: UITableViewController {
     @IBAction func receiveAction(_ sender: UIButton) {
         performSegue(withIdentifier: "ReceiveSegue", sender: nil)
     }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return alerts.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "alertCell", for: indexPath) as! AlertTableViewCell
+        
+        cell.typeAlertNameLabel.text = "holaaaa"
+        cell.titleAlertNameLabel.text = alerts[indexPath.row].titulo
+        cell.descriptionAlertNameLabel.text = alerts[indexPath.row].titulo
+            
+        return cell
+        
+    }
+    
+    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.selectedPlace = alerts[indexPath.row]
+        performSegue(withIdentifier: "detailsSgue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailsSgue" {
+            let detailsVC = segue.destination as? DetailsViewController
+            detailsVC?.place = self.selectedPlace
+        }
+    }*/
     
 }

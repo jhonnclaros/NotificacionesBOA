@@ -37,28 +37,16 @@ class APIManager {
             .responseObject { (response: DataResponse<Lista>) in
                 if response.error != nil {
                     //print(response.result.value ?? nil)
-                    var alerts = response.result.value
-                    print(alerts)
-                    success(alerts?.lista ?? [])
+                    let alerts = response.result.value
+                    //print(alerts)
+                    print(alerts!.lista)
+                    //success(alerts!.lista)
+                    
+                }
+                else{
+                    print("chauuuuu")
                 }
         }
-            /*.validate(statusCode: 200..<300).response { (response) in
-                if let data = response.data {
-                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any] {
-                        if (json["GetAlertasAgrupadasResult"] as? Array<AnyObject>)?.count != 0 {
-                            let jsonWithoutResult = json["GetAlertasAgrupadasResult"] as? String
-                            
-                            print(jsonWithoutResult as Any)
-                            
-                            /*if let jsonLista = try? JSONSerialization.jsonObject(with: jsonWithoutResult, options: []) as! [String: Any]{
-                                let jsonWithoutLista = jsonLista["lista"] as? String
-                                
-                                print(jsonWithoutLista as Any)
-                            }*/
-                        }
-                    }
-                }
-        }*/
     }
     
     /*static func login(username: String, password: String, code: String, success:@escaping () -> (), failure:@escaping (_ error: ServerError?) -> ()) {
