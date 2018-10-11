@@ -59,9 +59,24 @@ class APIManager {
             return
         }
         
-        Alamofire.request(getApproveAlertListEndpoint!, method: .post, parameters: data, encoding: JSONEncoding.default)
+        let parameters: Parameters = [
+            "credenciales": "",
+            "idSistema": "26",
+            "filtro": "",
+            "empleadoID": "1",
+            "estado": "0",
+            "pagina": "1",
+            "fechaIni": "",
+            "fechaFin": "",
+            "busquedaHistorialint": "0",
+            "paginacion_size": "1000",
+            "tipoAlerta": "2",
+            "Tipo": "1"
+        ]
+        
+        Alamofire.request(getApproveAlertListEndpoint!, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .validate(statusCode: 200..<300)
-            .responseObject { (response: DataResponse<Lista>) in
+            .responseObject { (response: DataResponse<AlertList>) in
                 if response.error == nil {
                     let alerts = response.result.value
                     success(alerts!.lista)

@@ -28,6 +28,18 @@ class Alert: Object {
     @objc dynamic var fecha: String?
     @objc dynamic var estadoAlertaId: Int = 0
     @objc dynamic var tipo: Int = 0
+    //aumentadas para alertas por aprpbar
+    @objc dynamic var fechaLeido: String?
+    @objc dynamic var usRemitente: Int = 0
+    @objc dynamic var estadoID: Int = 0
+    @objc dynamic var tipoAlertaId: Int = 0
+    @objc dynamic var acciones: String?
+    @objc dynamic var fechaUltimoAcceso: String?
+    @objc dynamic var remitente: String?
+    @objc dynamic var destinatario: String?
+    @objc dynamic var itemDestinatario: String?
+    @objc dynamic var usDestinatario: Int = 0
+    @objc dynamic var itemUsDestinatario: Int = 0
     
     required convenience init?(map: Map) {
         self.init()
@@ -49,6 +61,18 @@ class Alert: Object {
         self.fecha = alert["Fecha"] as? String
         self.estadoAlertaId = alert["EstadoAlertaId"] as? Int ?? 0
         self.tipo = alert["Tipo"] as? Int ?? 0
+        //aumentadas para alertas por aprpbar
+        self.fechaLeido = alert["FechaLeido"] as? String
+        self.usRemitente = alert["UsRemitente"] as? Int ?? 0
+        self.estadoID = alert["EstadoId"] as? Int ?? 0
+        self.tipoAlertaId = alert["TipoAlertaId"] as? Int ?? 0
+        self.acciones = alert["Acciones"] as? String
+        self.fechaUltimoAcceso = alert["FechaUltimoAcceso"] as? String
+        self.remitente = alert["remitente"] as? String
+        self.destinatario = alert["destinatario"] as? String
+        self.itemDestinatario = alert["itemDestinatario"] as? String
+        self.usDestinatario = alert["usDestinatario"] as? Int ?? 0
+        self.itemUsDestinatario = alert["itemUsDestinatario"] as? Int ?? 0
         
     }
 }
