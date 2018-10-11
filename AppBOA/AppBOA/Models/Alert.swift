@@ -12,12 +12,12 @@ import ObjectMapper
 import ObjectMapper_Realm
 import ObjectMapperAdditions
 
-class Alert: Object, Mappable {
+class Alert: Object {
     
     @objc dynamic var rowNum: Int = 0
     @objc dynamic var empleadoID: Int = 0
     @objc dynamic var titulo: String?
-    /*@objc dynamic var descripcionCorta: String?
+    @objc dynamic var descripcionCorta: String?
     @objc dynamic var sistemaOrigen: String?
     @objc dynamic var sistemaId: Int = 0
     @objc dynamic var cantAlertas: Int = 0
@@ -27,32 +27,28 @@ class Alert: Object, Mappable {
     @objc dynamic var alertaID: Int = 0
     @objc dynamic var fecha: String?
     @objc dynamic var estadoAlertaId: Int = 0
-    @objc dynamic var tipo: Int = 0*/
+    @objc dynamic var tipo: Int = 0
     
     required convenience init?(map: Map) {
         self.init()
-        mapping(map: map)
-    }
-    
-    func mapping(map: Map) {
-        rowNum <- map["RowNum"]
-        /*empleadoID <- map["empleadoID"]
-        titulo <- map["Titulo"]
-        descripcionCorta <- map["DescripcionCorta"]
-        sistemaOrigen <- map["SistemaOrigen"]
-        sistemaId <- map["SistemaId"]
-        cantAlertas <- map["CantAlertas"]
-        codigo <- map["codigo"]
-        mensaje <- map["mensaje"]
-        descripcion <- map["Descripcion"]
-        alertaID <- map["AlertaID"]
-        fecha <- map["Fecha"]
-        estadoAlertaId <- map["EstadoAlertaId"]
-        tipo <- map["Tipo"]*/
     }
     
     convenience init(alert: [String: Any]) {
         self.init()
+        self.rowNum = alert["RowNum"] as? Int ?? 0
+        self.empleadoID = alert["empleadoID"] as? Int ?? 0
         self.titulo = alert["Titulo"] as? String
+        self.descripcionCorta = alert["DescripcionCorta"] as? String
+        self.sistemaOrigen = alert["SistemaOrigen"] as? String
+        self.sistemaId = alert["SistemaId"] as? Int ?? 0
+        self.cantAlertas = alert["CantAlertas"] as? Int ?? 0
+        self.codigo = alert["codigo"] as? Int ?? 0
+        self.mensaje = alert["mensaje"] as? String
+        self.descripcion = alert["Descripcion"] as? String
+        self.alertaID = alert["AlertaID"] as? Int ?? 0
+        self.fecha = alert["Fecha"] as? String
+        self.estadoAlertaId = alert["EstadoAlertaId"] as? Int ?? 0
+        self.tipo = alert["Tipo"] as? Int ?? 0
+        
     }
 }

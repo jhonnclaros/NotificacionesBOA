@@ -31,7 +31,9 @@ class HomeViewController: UITableViewController {
     }
     
     fileprivate func loadData() {
-        title = "Inicio"
+        title = "Alertas"
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.label.text = "Processing"
         APIManager.getListAlerts(username: "jhonn.claros", success: { (alerts: [Alert]) in
             MBProgressHUD.hide(for: self.view, animated: true)
             self.alerts = alerts
@@ -73,25 +75,42 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "alertCell", for: indexPath) as! AlertTableViewCell
         
-        cell.typeAlertNameLabel.text = "holaaaa"
-        cell.titleAlertNameLabel.text = alerts[indexPath.row].titulo
-        cell.descriptionAlertNameLabel.text = alerts[indexPath.row].titulo
+        let tituloAlerta: String = alerts[indexPath.row].titulo ?? ""
+        let fechaAlerta: String = alerts[indexPath.row].fecha ?? ""
+        cell.titleAlertNameLabel.text = tituloAlerta
+        cell.accessoryType = .disclosureIndicator
+        if alerts[indexPath.row].alertaID > 0 {
+            cell.accessoryType = .detailDisclosureButton
+            cell.titleAlertNameLabel.text = fechaAlerta + " - " + tituloAlerta
+        }
+        cell.typeAlertNameLabel.text = alerts[indexPath.row].sistemaOrigen
+        cell.descriptionAlertNameLabel.text = alerts[indexPath.row].descripcionCorta
             
         return cell
         
     }
     
-    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.selectedPlace = alerts[indexPath.row]
-        performSegue(withIdentifier: "detailsSgue", sender: nil)
+        self.selectedAlert = alerts[indexPath.row]
+        if alerts[indexPath.row].alertaID > 0 {
+            performSegue(withIdentifier: "detailAlertSegue", sender: nil)
+        }
+        else {
+            performSegue(withIdentifier: "approveAlertsSegue", sender: nil)
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detailsSgue" {
-            let detailsVC = segue.destination as? DetailsViewController
-            detailsVC?.place = self.selectedPlace
+        if segue.identifier == "detailAlertSegue" {
+            let detailsVC = segue.destination as? AlertDetailsViewController
+            detailsVC?.selectedAlert = self.selectedAlert
         }
-    }*/
+        else if segue.identifier == "approveAlertsSegue" {
+            let detailsVC = segue.destination as? ApproveAlertTableViewController
+            detailsVC?.selectedAlert = self.selectedAlert
+        }
+    }
     
 }

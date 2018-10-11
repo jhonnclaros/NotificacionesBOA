@@ -22,6 +22,10 @@ class APIManager {
         url = url?.appendingPathComponent((DBManager.shared.getConfig()?.endpoints?.unreceived)!)
         return (url?.absoluteString)!
     }*/
+    
+    fileprivate static var getAlertListEndpoint: String? {
+        return Constants.API.ServiceBaseServer + "/GetAlertasAgrupadas"
+    }
 
     static func getListAlerts(username: String, success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
         if !ReachabilityManager.shared.isNetworkAvailable {
@@ -29,22 +33,40 @@ class APIManager {
             return
         }
         //let headers = createAuthorizationHeaders(user: username, password: password)
-        let baseURL = Constants.API.ServiceBaseServer + "/GetAlertasAgrupadas"
-        let parameters: Parameters = [ "credenciales": "", "empleadoID": "277"]
+        //let baseURL = Constants.API.ServiceBaseServer + "/GetAlertasAgrupadas"
+        let parameters: Parameters = [ "credenciales": "", "empleadoID": "1"]
         
-        Alamofire.request(baseURL, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request(getAlertListEndpoint!, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .validate(statusCode: 200..<300)
             .responseObject { (response: DataResponse<Lista>) in
-                if response.error != nil {
-                    //print(response.result.value ?? nil)
+                if response.error == nil {
                     let alerts = response.result.value
-                    //print(alerts)
-                    print(alerts!.lista)
-                    //success(alerts!.lista)
-                    
+                    success(alerts!.lista)
                 }
                 else{
-                    print("chauuuuu")
+                    failure(nil)
+                }
+        }
+    }
+    
+    static func getApproveAlertList(username: String, success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
+            return
+        }
+        //let headers = createAuthorizationHeaders(user: username, password: password)
+        //let baseURL = Constants.API.ServiceBaseServer + "/GetAlertasAgrupadas"
+        let parameters: Parameters = [ "credenciales": "", "empleadoID": "1"]
+        
+        Alamofire.request(getAlertListEndpoint!, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseObject { (response: DataResponse<Lista>) in
+                if response.error == nil {
+                    let alerts = response.result.value
+                    success(alerts!.lista)
+                }
+                else{
+                    failure(nil)
                 }
         }
     }

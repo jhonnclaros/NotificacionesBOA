@@ -30,12 +30,10 @@ class Lista: Object, Mappable {
         let data = mapAlert.data(using: .utf8)!
         do{
             let output = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
-            //print ("\(String(describing: output))")
             totalRegistros = output!["totalRegistros"] as! Int
             codigo = output!["codigo"] as! Int
             mensaje = output!["mensaje"] as? String
             lista = getAlertList(data: (output!["lista"] as? [[String: Any]])!)
-            print(lista)
         }
         catch {
             print (error)

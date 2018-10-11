@@ -18,6 +18,8 @@
 		00A5B3B0215D3A2200F457A3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5B3AF215D3A2200F457A3 /* AlertManager.swift */; };
 		3001D8A421670662007B2B86 /* Lista.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001D8A321670662007B2B86 /* Lista.swift */; };
 		3001D8A6216707CF007B2B86 /* AlertResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001D8A5216707CF007B2B86 /* AlertResult.swift */; };
+		3006A1EF216EF975006F2FC9 /* AlertDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006A1EE216EF975006F2FC9 /* AlertDetailsViewController.swift */; };
+		3006A1F1216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006A1F0216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift */; };
 		305AE979216C543300E764AD /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AE978216C543300E764AD /* AlertTableViewCell.swift */; };
 		3E51EE273C114CD2374E6E1E /* Pods_AppBOA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32CDDB585E74E638CD320E4C /* Pods_AppBOA.framework */; };
 		9AD25DAA21588E6D00DD2227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD25DA921588E6D00DD2227 /* AppDelegate.swift */; };
@@ -54,6 +56,8 @@
 		00A5B3AF215D3A2200F457A3 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		3001D8A321670662007B2B86 /* Lista.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lista.swift; sourceTree = "<group>"; };
 		3001D8A5216707CF007B2B86 /* AlertResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertResult.swift; sourceTree = "<group>"; };
+		3006A1EE216EF975006F2FC9 /* AlertDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailsViewController.swift; sourceTree = "<group>"; };
+		3006A1F0216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveAlertTableViewController.swift; sourceTree = "<group>"; };
 		305AE978216C543300E764AD /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		32CDDB585E74E638CD320E4C /* Pods_AppBOA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppBOA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD25DA621588E6D00DD2227 /* AppBOA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppBOA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +102,8 @@
 			children = (
 				305AE977216C540900E764AD /* Cells */,
 				007C7382215AE788008F4004 /* HomeViewController.swift */,
+				3006A1EE216EF975006F2FC9 /* AlertDetailsViewController.swift */,
+				3006A1F0216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -409,10 +415,12 @@
 				3001D8A421670662007B2B86 /* Lista.swift in Sources */,
 				00A5B3AA215BB86000F457A3 /* ReachabilityManager.swift in Sources */,
 				00A5B3AC215BB8DB00F457A3 /* ServerError.swift in Sources */,
+				3006A1F1216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift in Sources */,
 				9AD25DB221588E6E00DD2227 /* AppBOA.xcdatamodeld in Sources */,
 				305AE979216C543300E764AD /* AlertTableViewCell.swift in Sources */,
 				007C7383215AE788008F4004 /* HomeViewController.swift in Sources */,
 				00A5B3B0215D3A2200F457A3 /* AlertManager.swift in Sources */,
+				3006A1EF216EF975006F2FC9 /* AlertDetailsViewController.swift in Sources */,
 				00A5B3AE215C8FCB00F457A3 /* Alert.swift in Sources */,
 				00A5B3A6215B405000F457A3 /* APIManager.swift in Sources */,
 				00A5B3A8215B41EE00F457A3 /* Constants.swift in Sources */,
