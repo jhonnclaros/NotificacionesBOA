@@ -17,6 +17,7 @@ import Reachability
 class ApproveAlertTableViewController: UITableViewController {
     
     var selectedAlert: Alert?
+    var alerts = [Alert]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class ApproveAlertTableViewController: UITableViewController {
         title = "Aprobar Alertas"
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         hud.label.text = "Processing"
-        APIManager.getApproveAlertsList(generateSending(), success: { (alerts: [Alert]) in
+        APIManager.getApproveAlertList(generateSending(), success: { (alerts: [Alert]) in
             MBProgressHUD.hide(for: self.view, animated: true)
             self.alerts = alerts
             self.tableView.reloadData()

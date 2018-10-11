@@ -26,6 +26,10 @@ class APIManager {
     fileprivate static var getAlertListEndpoint: String? {
         return Constants.API.ServiceBaseServer + "/GetAlertasAgrupadas"
     }
+    
+    fileprivate static var getApproveAlertListEndpoint: String? {
+        return Constants.API.ServiceBaseServer + "/GetAlertas"
+    }
 
     static func getListAlerts(username: String, success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
         if !ReachabilityManager.shared.isNetworkAvailable {
@@ -49,16 +53,13 @@ class APIManager {
         }
     }
     
-    static func getApproveAlertList(username: String, success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
+    static func getApproveAlertList(_ data: [String: Any], success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
         if !ReachabilityManager.shared.isNetworkAvailable {
             failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
             return
         }
-        //let headers = createAuthorizationHeaders(user: username, password: password)
-        //let baseURL = Constants.API.ServiceBaseServer + "/GetAlertasAgrupadas"
-        let parameters: Parameters = [ "credenciales": "", "empleadoID": "1"]
         
-        Alamofire.request(getAlertListEndpoint!, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request(getApproveAlertListEndpoint!, method: .post, parameters: data, encoding: JSONEncoding.default)
             .validate(statusCode: 200..<300)
             .responseObject { (response: DataResponse<Lista>) in
                 if response.error == nil {
