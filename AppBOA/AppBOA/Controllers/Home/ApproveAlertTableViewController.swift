@@ -87,8 +87,9 @@ class ApproveAlertTableViewController: UITableViewController {
         let sistemaOrigen: String = alerts[indexPath.row].sistemaOrigen ?? ""
         cell.typeAlertLabel.text = fechaAlerta + " - " + sistemaOrigen
         cell.titleAlertLabel.text = tituloAlerta
+        cell.accessoryType = .disclosureIndicator
         /*if alerts[indexPath.row].alertaID > 0 {
-            cell.accessoryType = .detailDisclosureButton
+            //cell.accessoryType = .detailDisclosureButton
             cell.titleAlertNameLabel.text = fechaAlerta + " - " + tituloAlerta
         }*/
         cell.shortDescriptionLabel.text = alerts[indexPath.row].descripcionCorta
