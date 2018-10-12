@@ -30,6 +30,10 @@ class APIManager {
     fileprivate static var getApproveAlertListEndpoint: String? {
         return Constants.API.ServiceBaseServer + "/GetAlertas"
     }
+    
+    fileprivate static var getAlertDetailsEndpoint: String? {
+        return Constants.API.ServiceBaseServer + "/GetDetalleAlerta"
+    }
 
     static func getListAlerts(username: String, success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
         if !ReachabilityManager.shared.isNetworkAvailable {
@@ -38,7 +42,7 @@ class APIManager {
         }
         //let headers = createAuthorizationHeaders(user: username, password: password)
         //let baseURL = Constants.API.ServiceBaseServer + "/GetAlertasAgrupadas"
-        let parameters: Parameters = [ "credenciales": "", "empleadoID": "1"]
+        let parameters: Parameters = [ "credenciales": "", "empleadoID": "277"]
         
         Alamofire.request(getAlertListEndpoint!, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .validate(statusCode: 200..<300)
@@ -80,6 +84,25 @@ class APIManager {
                 if response.error == nil {
                     let alerts = response.result.value
                     success(alerts!.lista)
+                }
+                else{
+                    failure(nil)
+                }
+        }
+    }
+    
+    static func getAlertDetail(_ data: [String: Any], success:@escaping (_ alertDetails: AlertDetails) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
+            return
+        }
+        
+        Alamofire.request(getAlertDetailsEndpoint!, method: .post, parameters: data, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseObject { (response: DataResponse<AlertDetails>) in
+                if response.error == nil {
+                    let alertdetails = response.result.value
+                    success(alertdetails!)
                 }
                 else{
                     failure(nil)
