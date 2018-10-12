@@ -20,7 +20,7 @@ class AlertDetailsViewController: UIViewController {
     @IBOutlet weak var originTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
-    @IBOutlet var readLabel: UIView!
+    @IBOutlet weak var readLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var requestInfo: UILabel!
     
@@ -39,7 +39,11 @@ class AlertDetailsViewController: UIViewController {
             MBProgressHUD.hide(for: self.view, animated: true)
             self.dateLabel.text = alertDetails.fecha
             self.originTitleLabel.text = alertDetails.sistemaOrigen
-            
+            self.titleLabel.text = alertDetails.titulo
+            self.stateLabel.text = alertDetails.estadoAlerta
+            self.readLabel.text = alertDetails.fechaLeido
+            self.descriptionLabel.text = alertDetails.descripcionCorta
+            self.requestInfo.text = alertDetails.descripcion
             
         }, failure: { (error) in
             MBProgressHUD.hide(for: self.view, animated: true)
