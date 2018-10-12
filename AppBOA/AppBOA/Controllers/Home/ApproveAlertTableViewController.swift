@@ -62,4 +62,39 @@ class ApproveAlertTableViewController: UITableViewController {
         body["Tipo"] = selectedAlert?.tipo
         return body
     }
+    
+    @IBAction func countAction(_ sender: UIButton) {
+        performSegue(withIdentifier: "CountSegue", sender: nil)
+    }
+    
+    @IBAction func receiveAction(_ sender: UIButton) {
+        performSegue(withIdentifier: "ReceiveSegue", sender: nil)
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return alerts.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "alertApproveCell", for: indexPath) as! AlertApproveTableViewCell
+        
+        let tituloAlerta: String = alerts[indexPath.row].titulo ?? ""
+        let fechaAlerta: String = alerts[indexPath.row].fecha ?? ""
+        let sistemaOrigen: String = alerts[indexPath.row].sistemaOrigen ?? ""
+        cell.typeAlertLabel.text = fechaAlerta + " - " + sistemaOrigen
+        cell.titleAlertLabel.text = tituloAlerta
+        /*if alerts[indexPath.row].alertaID > 0 {
+            cell.accessoryType = .detailDisclosureButton
+            cell.titleAlertNameLabel.text = fechaAlerta + " - " + tituloAlerta
+        }*/
+        cell.shortDescriptionLabel.text = alerts[indexPath.row].descripcionCorta
+        cell.longDescriptionLabel.text = alerts[indexPath.row].descripcion
+        
+        return cell
+        
+    }
 }

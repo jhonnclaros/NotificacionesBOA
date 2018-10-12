@@ -23,6 +23,7 @@
 		3006A1EF216EF975006F2FC9 /* AlertDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006A1EE216EF975006F2FC9 /* AlertDetailsViewController.swift */; };
 		3006A1F1216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006A1F0216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift */; };
 		305AE979216C543300E764AD /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AE978216C543300E764AD /* AlertTableViewCell.swift */; };
+		3071710121703716009B7DEF /* AlertApproveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071710021703716009B7DEF /* AlertApproveTableViewCell.swift */; };
 		3E51EE273C114CD2374E6E1E /* Pods_AppBOA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32CDDB585E74E638CD320E4C /* Pods_AppBOA.framework */; };
 		9AD25DAA21588E6D00DD2227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD25DA921588E6D00DD2227 /* AppDelegate.swift */; };
 		9AD25DAC21588E6D00DD2227 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD25DAB21588E6D00DD2227 /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		3006A1EE216EF975006F2FC9 /* AlertDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailsViewController.swift; sourceTree = "<group>"; };
 		3006A1F0216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveAlertTableViewController.swift; sourceTree = "<group>"; };
 		305AE978216C543300E764AD /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
+		3071710021703716009B7DEF /* AlertApproveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertApproveTableViewCell.swift; sourceTree = "<group>"; };
 		32CDDB585E74E638CD320E4C /* Pods_AppBOA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppBOA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD25DA621588E6D00DD2227 /* AppBOA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppBOA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD25DA921588E6D00DD2227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				305AE978216C543300E764AD /* AlertTableViewCell.swift */,
+				3071710021703716009B7DEF /* AlertApproveTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 			files = (
 				9AD25DD92158913E00DD2227 /* AppStoryboard.swift in Sources */,
 				3001D8A6216707CF007B2B86 /* AlertResult.swift in Sources */,
+				3071710121703716009B7DEF /* AlertApproveTableViewCell.swift in Sources */,
 				9AD25DD72158913E00DD2227 /* LoginViewController.swift in Sources */,
 				00C4B0CA217007A200A956C5 /* AlertList.swift in Sources */,
 				9AD25DAC21588E6D00DD2227 /* ViewController.swift in Sources */,
