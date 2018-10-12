@@ -21,7 +21,6 @@ class Lista: Object, Mappable {
     
     required convenience init?(map: Map) {
         self.init()
-        //mapping(map: map)
         mapping(map: map)
     }
     
@@ -38,14 +37,12 @@ class Lista: Object, Mappable {
         catch {
             print (error)
         }
-        
     }
     
     func getAlertList(data: [[String: Any]]) -> [Alert] {
         var alertList: [Alert] = []
         for alert in data {
             alertList.append(Alert(alert: alert))
-            //alertList.append(alert)
         }
         return alertList
     }

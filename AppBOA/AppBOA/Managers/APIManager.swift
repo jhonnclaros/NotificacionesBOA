@@ -62,23 +62,8 @@ class APIManager {
             failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
             return
         }
-        
-        let parameters: Parameters = [
-            "credenciales": "",
-            "idSistema": "26",
-            "filtro": "",
-            "empleadoID": "1",
-            "estado": "0",
-            "pagina": "1",
-            "fechaIni": "",
-            "fechaFin": "",
-            "busquedaHistorialint": "0",
-            "paginacion_size": "1000",
-            "tipoAlerta": "2",
-            "Tipo": "1"
-        ]
-        
-        Alamofire.request(getApproveAlertListEndpoint!, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+
+        Alamofire.request(getApproveAlertListEndpoint!, method: .post, parameters: data, encoding: JSONEncoding.default)
             .validate(statusCode: 200..<300)
             .responseObject { (response: DataResponse<AlertList>) in
                 if response.error == nil {
