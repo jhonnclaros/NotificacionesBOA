@@ -42,7 +42,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JN7-pH-8ho">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="mFv-Yt-xlc">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoBoa" translatesAutoresizingMaskIntoConstraints="NO" id="mFv-Yt-xlc">
                                                 <rect key="frame" x="20" y="36" width="335" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="dXL-eg-E0b"/>
@@ -174,6 +174,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="16" height="16"/>
+        <image name="logoBoa" width="100" height="55"/>
     </resources>
 </document>
