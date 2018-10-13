@@ -61,7 +61,8 @@ class AlertDetailsViewController: UIViewController {
         var body: [String: Any] = [:]
         body["alertaID"] = selectedAlert?.alertaID
         body["empleadoId"] = selectedAlert?.empleadoID
-        body["itemId"] = "18260"
+        let itemID = UserDefaults.standard.string(forKey: "itemIDSession")
+        body["itemId"] = itemID
         return body
     }
 }

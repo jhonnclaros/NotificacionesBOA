@@ -43,10 +43,65 @@ class LoginViewController: UIViewController {
         if fieldsAreValid() {
             let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
             hud.label.text = "Procesando"
-            AppDelegate.getDelegate().segueToHomeViewController()
-            UserDefaults.standard.setValue(usernameTextField.text, forKey: "userSession")
+            APIManager.login(username: usernameTextField.text!, password: passwordTextField.text!,  success: { (loginData: Login) in
+                //MBProgressHUD.hide(for: self.view, animated: true)
+                if loginData.codigo == 1 {
+                    //AppDelegate.getDelegate().segueToHomeViewController()
+                    //llamar al servicio userinfo
+                    APIManager.userInfo(username: self.usernameTextField.text!, success: { (userInfo: UserInfo) in
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                        if userInfo.employeeID > 0 {
+                            AppDelegate.getDelegate().segueToHomeViewController()
+
+                            UserDefaults.standard.setValue(userInfo.userName, forKey: "userSession")
+                            UserDefaults.standard.setValue(userInfo.employeeID, forKey: "employeeIDSession")
+                            UserDefaults.standard.setValue(userInfo.employeeName, forKey: "employeeNameSession")
+                            UserDefaults.standard.setValue(userInfo.itemID, forKey: "itemIDSession")
+                        }
+                        else{
+                            MBProgressHUD.hide(for: self.view, animated: true)
+                            AlertManager.showAlert(from: self, title: "AppBoa", message: "Usuario Incorrecto", buttonStyle: .default)
+                        }
+                    }, failure: { (error) in
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                        var errorMessage = Constants.Error.InternalServerMessage
+                        var titleMessage = Constants.Error.ErrorInternalServerTitle
+                        if error != nil {
+                            errorMessage = (error?.desc)!
+                            titleMessage = "AppBoa"
+                        }
+                        AlertManager.showAlert(from: self, title: titleMessage, message: errorMessage, buttonStyle: .default)
+                    })
+                    
+                    
+                    UserDefaults.standard.setValue(self.usernameTextField.text, forKey: "userSession")
+                }
+                else{
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    AlertManager.showAlert(from: self, title: "AppBoa", message: "Usuario Incorrecto", buttonStyle: .default)
+                }
+            }, failure: { (error) in
+                MBProgressHUD.hide(for: self.view, animated: true)
+                var errorMessage = Constants.Error.InternalServerMessage
+                var titleMessage = Constants.Error.ErrorInternalServerTitle
+                if error != nil {
+                    errorMessage = (error?.desc)!
+                    titleMessage = "AppBoa"
+                }
+                AlertManager.showAlert(from: self, title: titleMessage, message: errorMessage, buttonStyle: .default)
+            })
         }
     }
+    
+    @IBAction func showPassword(_ sender: UISwitch) {
+        if sender.isOn {
+            self.passwordTextField.isSecureTextEntry = false
+        }
+        else {
+            self.passwordTextField.isSecureTextEntry = true
+        }
+    }
+    
     
 }
 

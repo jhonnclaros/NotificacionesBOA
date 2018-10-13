@@ -33,13 +33,12 @@ class HomeViewController: UITableViewController {
     fileprivate func loadData() {
         title = "Alertas"
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.label.text = "Processing"
-        APIManager.getListAlerts(username: "jhonn.claros", success: { (alerts: [Alert]) in
+        hud.label.text = "Procesando"
+        let employeeID = UserDefaults.standard.string(forKey: "employeeIDSession")
+        APIManager.getListAlerts(empleadoID: employeeID ?? "0", success: { (alerts: [Alert]) in
             MBProgressHUD.hide(for: self.view, animated: true)
             self.alerts = alerts
             self.tableView.reloadData()
-            
-            
         }, failure: { (error) in
             MBProgressHUD.hide(for: self.view, animated: true)
             var errorMessage = Constants.Error.InternalServerMessage

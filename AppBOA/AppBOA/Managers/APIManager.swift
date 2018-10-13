@@ -34,15 +34,22 @@ class APIManager {
     fileprivate static var getAlertDetailsEndpoint: String? {
         return Constants.API.ServiceBaseServer + "/GetDetalleAlerta"
     }
+    
+    fileprivate static var loginEndpoint: String? {
+        return Constants.API.ServiceBaseServerProof + "/AutentificarUsuario"
+    }
+    
+    fileprivate static var userInfoEndpoint: String? {
+        return Constants.API.ServiceBaseServerProof + "/GetUserInfo"
+    }
 
-    static func getListAlerts(username: String, success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
+    static func getListAlerts(empleadoID: String, success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
         if !ReachabilityManager.shared.isNetworkAvailable {
             failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
             return
         }
-        //let headers = createAuthorizationHeaders(user: username, password: password)
-        //let baseURL = Constants.API.ServiceBaseServer + "/GetAlertasAgrupadas"
-        let parameters: Parameters = [ "credenciales": "", "empleadoID": "277"]
+
+        let parameters: Parameters = [ "credenciales": "", "empleadoID": empleadoID]
         
         Alamofire.request(getAlertListEndpoint!, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .validate(statusCode: 200..<300)
@@ -93,6 +100,58 @@ class APIManager {
                     failure(nil)
                 }
         }
+    }
+    
+    static func login(username: String, password: String, success:@escaping (_ loginData: Login) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
+            return
+        }
+        let parameters: Parameters = [ "username": username, "pwd": password]
+        
+        Alamofire.request(loginEndpoint!, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseObject { (response: DataResponse<Login>) in
+                
+                if response.error == nil {
+                    let loginInfo = response.result.value
+                    success(loginInfo!)
+                }
+                else{
+                    failure(nil)
+                }
+        }
+    }
+    
+    static func userInfo(username: String, success:@escaping (_ userInfo: UserInfo) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
+            return
+        }
+        let parameters: Parameters = [ "username": username]
+        
+        Alamofire.request(userInfoEndpoint!, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseObject { (response: DataResponse<UserInfo>) in
+                
+                if response.error == nil {
+                    let userInfo = response.result.value
+                    success(userInfo!)
+                }
+                else{
+                    failure(nil)
+                }
+        }
+    }
+    
+    static func getErrorList(errors: [[String : Any]]) -> [ServerError] {
+        var errorsList: [ServerError] = []
+        for error in errors {
+            if error["description"] != nil {
+                errorsList.append(ServerError(error: error))
+            }
+        }
+        return errorsList
     }
     
     /*static func login(username: String, password: String, code: String, success:@escaping () -> (), failure:@escaping (_ error: ServerError?) -> ()) {

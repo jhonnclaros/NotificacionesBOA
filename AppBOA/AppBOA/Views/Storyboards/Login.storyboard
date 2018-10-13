@@ -74,6 +74,9 @@
                                                     </textField>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0Uf-24-aSb">
                                                         <rect key="frame" x="270.5" y="111" width="50.5" height="31"/>
+                                                        <connections>
+                                                            <action selector="showPassword:" destination="fwM-YI-Gms" eventType="valueChanged" id="Rd3-yS-pis"/>
+                                                        </connections>
                                                     </switch>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zwm-0c-J9j">
                                                         <rect key="frame" x="102.5" y="171" width="130" height="44"/>
@@ -90,7 +93,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="0Uf-24-aSb" firstAttribute="leading" secondItem="M2K-6a-WIw" secondAttribute="trailing" constant="125" id="42p-Si-Thv"/>
                                                     <constraint firstAttribute="trailing" secondItem="npE-AD-53k" secondAttribute="trailing" constant="16" id="97z-Cb-AfY"/>
@@ -122,11 +125,11 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Por favor acceda con su cuenta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcP-FF-blT">
                                                 <rect key="frame" x="79.5" y="112" width="216" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.28627450980392155" green="0.29411764705882354" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="XcP-FF-blT" firstAttribute="top" secondItem="mFv-Yt-xlc" secondAttribute="bottom" constant="24" id="AY5-Fy-fVu"/>
                                             <constraint firstItem="mFv-Yt-xlc" firstAttribute="leading" secondItem="JN7-pH-8ho" secondAttribute="leading" constant="20" id="GNT-6v-0sj"/>

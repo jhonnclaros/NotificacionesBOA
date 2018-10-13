@@ -79,6 +79,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func loadInitialViewController() {
         if let _ = UserDefaults.standard.string(forKey: "userSession") {
             segueToHomeViewController()
+            UserDefaults.standard.removeObject(forKey: "userSession")
+            UserDefaults.standard.removeObject(forKey: "employeeIDSession")
+            UserDefaults.standard.removeObject(forKey: "employeeNameSession")
+            UserDefaults.standard.removeObject(forKey: "itemIDSession")
+            //logout()
          }
          else {
             segueToLoginViewController()
@@ -93,6 +98,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func segueToHomeViewController() {
         let homeScene = AppStoryboard.Home.initialViewController()
         self.window?.rootViewController = homeScene
+    }
+    
+    func logout() {
+        /*var baseURL = Constants.API.BaseServer
+        baseURL = baseURL.replacingOccurrences(of: "http", with: "https")
+        UserDefaults.standard.set(baseURL, forKey: "BrandingBaseURL")*/
+        UserDefaults.standard.setValue("", forKey: "userSession")
+        segueToLoginViewController()
     }
     
     /*func presentMenuViewController(controller: UIViewController) {
