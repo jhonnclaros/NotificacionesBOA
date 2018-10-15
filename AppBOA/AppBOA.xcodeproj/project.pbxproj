@@ -20,6 +20,7 @@
 		3001282D2171A03200C37257 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001282C2171A03200C37257 /* Login.swift */; };
 		3001282F2171A05500C37257 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001282E2171A05500C37257 /* UserInfo.swift */; };
 		3001D8A421670662007B2B86 /* Lista.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001D8A321670662007B2B86 /* Lista.swift */; };
+		3005A3BF21741BDD00EE2587 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3005A3BE21741BDD00EE2587 /* MenuTableViewController.swift */; };
 		3006A1EF216EF975006F2FC9 /* AlertDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006A1EE216EF975006F2FC9 /* AlertDetailsViewController.swift */; };
 		3006A1F1216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006A1F0216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift */; };
 		305AE979216C543300E764AD /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AE978216C543300E764AD /* AlertTableViewCell.swift */; };
@@ -62,6 +63,7 @@
 		3001282C2171A03200C37257 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		3001282E2171A05500C37257 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		3001D8A321670662007B2B86 /* Lista.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lista.swift; sourceTree = "<group>"; };
+		3005A3BE21741BDD00EE2587 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		3006A1EE216EF975006F2FC9 /* AlertDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailsViewController.swift; sourceTree = "<group>"; };
 		3006A1F0216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveAlertTableViewController.swift; sourceTree = "<group>"; };
 		305AE978216C543300E764AD /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				007C7381215AE754008F4004 /* Home */,
 				9AD25DCE2158913D00DD2227 /* Login */,
+				3005A3BE21741BDD00EE2587 /* MenuTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 			files = (
 				9AD25DD92158913E00DD2227 /* AppStoryboard.swift in Sources */,
 				3071710121703716009B7DEF /* AlertApproveTableViewCell.swift in Sources */,
+				3005A3BF21741BDD00EE2587 /* MenuTableViewController.swift in Sources */,
 				9AD25DD72158913E00DD2227 /* LoginViewController.swift in Sources */,
 				00C4B0CA217007A200A956C5 /* AlertList.swift in Sources */,
 				9AD25DAC21588E6D00DD2227 /* ViewController.swift in Sources */,

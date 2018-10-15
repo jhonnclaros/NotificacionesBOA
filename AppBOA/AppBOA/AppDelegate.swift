@@ -100,6 +100,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = homeScene
     }
     
+    func presentMenuViewController(controller: UIViewController) {
+        let menuScene = AppStoryboard.Menu.initialViewController()
+        controller.present(menuScene!, animated: true)
+    }
+    
     func logout() {
         /*var baseURL = Constants.API.BaseServer
         baseURL = baseURL.replacingOccurrences(of: "http", with: "https")

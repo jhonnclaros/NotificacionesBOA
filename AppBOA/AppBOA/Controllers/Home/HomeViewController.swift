@@ -63,6 +63,10 @@ class HomeViewController: UITableViewController {
         performSegue(withIdentifier: "ReceiveSegue", sender: nil)
     }
     
+    @IBAction func menuAction(_ sender: Any) {
+        AppDelegate.getDelegate().presentMenuViewController(controller: self)
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
