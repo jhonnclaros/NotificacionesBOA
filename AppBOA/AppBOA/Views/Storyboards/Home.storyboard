@@ -14,16 +14,16 @@
         <scene sceneID="Uuj-ns-CMJ">
             <objects>
                 <tableViewController id="DCU-Jm-H8I" customClass="ApproveAlertTableViewController" customModule="AppBOA" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="n1o-O7-uND">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="n1o-O7-uND">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="alertApproveCell" rowHeight="130" id="DOt-0C-D6K" customClass="AlertApproveTableViewCell" customModule="AppBOA" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="130"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="alertApproveCell" rowHeight="150" id="DOt-0C-D6K" customClass="AlertApproveTableViewCell" customModule="AppBOA" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DOt-0C-D6K" id="sYD-mG-EJd">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1i-4T-9OY">
@@ -50,16 +50,36 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-Li-4Wl">
+                                            <rect key="frame" x="32" y="112" width="56" height="33"/>
+                                            <state key="normal" title="Aprobar"/>
+                                            <connections>
+                                                <action selector="approveAlert:" destination="DCU-Jm-H8I" eventType="touchUpInside" id="09R-tG-sBO"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBz-Ip-XcC">
+                                            <rect key="frame" x="279" y="112" width="64" height="33"/>
+                                            <state key="normal" title="Rechazar"/>
+                                            <connections>
+                                                <action selector="rejectAlert:" destination="DCU-Jm-H8I" eventType="touchUpInside" id="eRF-ys-Igz"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="m1e-xQ-agc" secondAttribute="trailing" constant="16" id="1n7-mR-RPS"/>
+                                        <constraint firstItem="Jpx-Li-4Wl" firstAttribute="top" secondItem="a5B-rB-R7c" secondAttribute="bottom" constant="6" id="4OS-29-ilS"/>
                                         <constraint firstItem="a5B-rB-R7c" firstAttribute="top" secondItem="m1e-xQ-agc" secondAttribute="bottom" constant="6" id="7gg-qZ-W4P"/>
                                         <constraint firstItem="a5B-rB-R7c" firstAttribute="leading" secondItem="sYD-mG-EJd" secondAttribute="leadingMargin" constant="16" id="Lcm-hc-PvL"/>
+                                        <constraint firstItem="Jpx-Li-4Wl" firstAttribute="bottom" secondItem="sYD-mG-EJd" secondAttribute="bottomMargin" constant="6" id="Ol5-d0-XDT"/>
+                                        <constraint firstItem="Jpx-Li-4Wl" firstAttribute="leading" secondItem="sYD-mG-EJd" secondAttribute="leadingMargin" constant="16" id="QX9-JU-Y3u"/>
                                         <constraint firstItem="K1i-4T-9OY" firstAttribute="leading" secondItem="sYD-mG-EJd" secondAttribute="leadingMargin" constant="16" id="SoE-Nq-J3z"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="K1i-4T-9OY" secondAttribute="trailing" constant="16" id="Ubh-YZ-rdF"/>
+                                        <constraint firstItem="bBz-Ip-XcC" firstAttribute="bottom" secondItem="sYD-mG-EJd" secondAttribute="bottomMargin" constant="6" id="hXB-W0-0jc"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Gcj-yf-2U3" secondAttribute="trailing" constant="16" id="iVC-rV-qsM"/>
                                         <constraint firstItem="m1e-xQ-agc" firstAttribute="top" secondItem="Gcj-yf-2U3" secondAttribute="bottom" constant="6" id="kMZ-fg-NKW"/>
+                                        <constraint firstItem="bBz-Ip-XcC" firstAttribute="top" secondItem="a5B-rB-R7c" secondAttribute="bottom" constant="6" id="kjQ-wz-Rhc"/>
                                         <constraint firstItem="K1i-4T-9OY" firstAttribute="top" secondItem="sYD-mG-EJd" secondAttribute="topMargin" id="nXX-we-tkZ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bBz-Ip-XcC" secondAttribute="trailing" constant="16" id="o8N-Vl-x9u"/>
                                         <constraint firstItem="Gcj-yf-2U3" firstAttribute="leading" secondItem="sYD-mG-EJd" secondAttribute="leadingMargin" constant="16" id="r0n-yF-L63"/>
                                         <constraint firstItem="m1e-xQ-agc" firstAttribute="leading" secondItem="sYD-mG-EJd" secondAttribute="leadingMargin" constant="16" id="tLp-V3-bki"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="a5B-rB-R7c" secondAttribute="trailing" constant="16" id="xXC-Jh-HCA"/>

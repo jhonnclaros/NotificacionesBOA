@@ -71,6 +71,29 @@ class ApproveAlertTableViewController: UITableViewController {
         performSegue(withIdentifier: "ReceiveSegue", sender: nil)
     }
     
+    @IBAction func approveAlert(_ sender: UIButton) {
+        let title = selectedAlert?.titulo
+        showAlert(title: "Aprobar Alerta", message: "Esta Seguro de Aprobar el Permiso?")
+    }
+    
+    @IBAction func rejectAlert(_ sender: UIButton) {
+        showAlert(title: "Rechazar Alerta", message: "Esta Seguro de Rechazar el Permiso?")
+    }
+    
+    func showAlert(title: String, message: String) {
+        let messageAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let approveAction = UIAlertAction(title: "Aprobar", style: .default) { (action) in
+            /*self.mensajeLabel.text = "Barcelona es una ciudad española, capital de la comunidad autónoma de Cataluña, de la comarca del Barcelonés y de la provincia homónima. Población: 1,609 millones (2016)"*/
+        }
+        let rejectAction = UIAlertAction(title: "Cancelar", style: .default, handler: {(action) in
+            //self.mensajeLabel.text = ""
+        })
+        messageAlert.addAction(approveAction)
+        messageAlert.addAction(rejectAction)
+        present(messageAlert, animated: true, completion: nil)
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
