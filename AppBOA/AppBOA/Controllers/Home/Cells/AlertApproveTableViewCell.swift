@@ -18,6 +18,11 @@ class AlertApproveTableViewCell: UITableViewCell{
     @IBOutlet weak var shortDescriptionLabel: UILabel!
     
     @IBOutlet weak var longDescriptionLabel: UILabel!
+    
+    @IBOutlet weak var approveAlertButton: UIButton!
+    
+    @IBOutlet weak var rejectAlertButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

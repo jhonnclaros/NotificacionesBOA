@@ -35,6 +35,10 @@ class APIManager {
         return Constants.API.ServiceBaseServer + "/GetDetalleAlerta"
     }
     
+    fileprivate static var getApproveAlertEndpoint: String? {
+        return Constants.API.ServiceBaseServer + "/AprobarAlert"
+    }
+    
     fileprivate static var loginEndpoint: String? {
         return Constants.API.ServiceBaseServerProof + "/AutentificarUsuario"
     }
@@ -71,6 +75,25 @@ class APIManager {
         }
 
         Alamofire.request(getApproveAlertListEndpoint!, method: .post, parameters: data, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseObject { (response: DataResponse<AlertList>) in
+                if response.error == nil {
+                    let alerts = response.result.value
+                    success(alerts!.lista)
+                }
+                else{
+                    failure(nil)
+                }
+        }
+    }
+    
+    static func approveAlert(_ data: [String: Any], success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
+            return
+        }
+        
+        Alamofire.request(getApproveAlertEndpoint!, method: .post, parameters: data, encoding: JSONEncoding.default)
             .validate(statusCode: 200..<300)
             .responseObject { (response: DataResponse<AlertList>) in
                 if response.error == nil {
@@ -153,56 +176,6 @@ class APIManager {
         }
         return errorsList
     }
-    
-    /*static func login(username: String, password: String, code: String, success:@escaping () -> (), failure:@escaping (_ error: ServerError?) -> ()) {
-        if !ReachabilityManager.shared.isNetworkAvailable {
-            failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
-            return
-        }
-        let headers = createAuthorizationHeaders(user: username, password: password)
-        if code == "apple" {
-            UserDefaults.standard.set("https://72ptcibcq7.execute-api.us-west-2.amazonaws.com/apple", forKey: "BaseURLApple")
-        }
-        else {
-            UserDefaults.standard.removeObject(forKey: "BaseURLApple")
-        }
-        Alamofire.request(Constants.API.AuthorizationURL(accessCode: code), method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers)
-            .validate(statusCode: 200..<300)
-            .responseObject { (response: DataResponse<Config>) in
-                if response.error != nil {
-                    if let res = response.response, (400..<599).contains(res.statusCode) { //to display error 504, incorrect username and/or password
-                        //                        if (400..<499).contains(response.response!.statusCode) { //Business rule
-                        var errorsList: List<ServerError> = List<ServerError>()
-                        if let data = response.data {
-                            if let json = try? JSONSerialization.jsonObject(with: data,  options: []) as! [[String : Any]] {
-                                errorsList = getErrorList(errors: json.reversed())
-                            }
-                        }
-                        for error in errorsList {
-                            failure(error)
-                        }
-                    } else {
-                        failure(nil)
-                    }
-                }
-                else {
-                    UserDefaults.standard.set(headers, forKey: "AuthorizationHeaders")
-                    let config = response.result.value
-                    DBManager.shared.saveConfig(config!)
-                    if (config?.locations.isEmpty)! {
-                        self.getLocations(success: { (locations) in
-                            DBManager.shared.appendLocations(locations: locations, config: config!)
-                            success()
-                        }, failure: { (error) in
-                            success()
-                        })
-                    }
-                    else {
-                        success()
-                    }
-                }
-        }
-    }*/
 
     struct JSONArrayEncoding: ParameterEncoding {
         private let array: [AnyObject]

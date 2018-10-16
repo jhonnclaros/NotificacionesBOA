@@ -27,7 +27,7 @@ class ApproveAlertTableViewController: UITableViewController {
     func loadData() {
         title = "Aprobar Alertas"
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.label.text = "Processing"
+        hud.label.text = "Procesando"
         APIManager.getApproveAlertList(generateSending(), success: { (alerts: [Alert]) in
             MBProgressHUD.hide(for: self.view, animated: true)
             self.alerts = alerts
@@ -62,7 +62,7 @@ class ApproveAlertTableViewController: UITableViewController {
         body["Tipo"] = selectedAlert?.tipo
         return body
     }
-    
+
     @IBAction func countAction(_ sender: UIButton) {
         performSegue(withIdentifier: "CountSegue", sender: nil)
     }
@@ -70,30 +70,7 @@ class ApproveAlertTableViewController: UITableViewController {
     @IBAction func receiveAction(_ sender: UIButton) {
         performSegue(withIdentifier: "ReceiveSegue", sender: nil)
     }
-    
-    @IBAction func approveAlert(_ sender: UIButton) {
-        let title = selectedAlert?.titulo
-        showAlert(title: "Aprobar Alerta", message: "Esta Seguro de Aprobar el Permiso?")
-    }
-    
-    @IBAction func rejectAlert(_ sender: UIButton) {
-        showAlert(title: "Rechazar Alerta", message: "Esta Seguro de Rechazar el Permiso?")
-    }
-    
-    func showAlert(title: String, message: String) {
-        let messageAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let approveAction = UIAlertAction(title: "Aprobar", style: .default) { (action) in
-            /*self.mensajeLabel.text = "Barcelona es una ciudad española, capital de la comunidad autónoma de Cataluña, de la comarca del Barcelonés y de la provincia homónima. Población: 1,609 millones (2016)"*/
-        }
-        let rejectAction = UIAlertAction(title: "Cancelar", style: .default, handler: {(action) in
-            //self.mensajeLabel.text = ""
-        })
-        messageAlert.addAction(approveAction)
-        messageAlert.addAction(rejectAction)
-        present(messageAlert, animated: true, completion: nil)
-    }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -110,15 +87,64 @@ class ApproveAlertTableViewController: UITableViewController {
         let sistemaOrigen: String = alerts[indexPath.row].sistemaOrigen ?? ""
         cell.typeAlertLabel.text = fechaAlerta + " - " + sistemaOrigen
         cell.titleAlertLabel.text = tituloAlerta
-        //cell.accessoryType = .disclosureIndicator
-        /*if alerts[indexPath.row].alertaID > 0 {
-            //cell.accessoryType = .detailDisclosureButton
-            cell.titleAlertNameLabel.text = fechaAlerta + " - " + tituloAlerta
-        }*/
         cell.shortDescriptionLabel.text = alerts[indexPath.row].descripcionCorta
         cell.longDescriptionLabel.text = alerts[indexPath.row].descripcion
+        cell.approveAlertButton.tag = indexPath.row
+        cell.rejectAlertButton.tag = indexPath.row
         
         return cell
         
     }
+    
+    
+    @IBAction func approveAlertActionButton(_ sender: UIButton) {
+        //print(alerts[sender.tag])
+        showConfirmMessage(title: "", message: "Esta Seguro de Aprobar esta solicitud?", alert: alerts[sender.tag], typeFormID: 1, typeApproveID: 1, observation: "")
+    }
+    
+    @IBAction func rejectAlertActionButton(_ sender: UIButton) {
+        showConfirmMessage(title: "", message: "Esta Seguro de Rechazar esta solicitud?", alert: alerts[sender.tag], typeFormID: 1, typeApproveID: 2, observation: "rechazado")
+    }
+    
+    func showConfirmMessage(title: String, message: String, alert: Alert, typeFormID: Int, typeApproveID: Int, observation: String) {
+        let messageAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let approveAction = UIAlertAction(title: "Aceptar", style: .default) { (action) in
+            //funcionalidad para aprobar o rechazar
+            self.approveAlertMethod(alert: alert, typeFormID: typeFormID, typeApproveID: typeApproveID, observation: observation)
+        }
+        let rejectAction = UIAlertAction(title: "Cancelar", style: .default, handler: {(action) in
+            //funcionalidad para cancelar sin hacer nada
+            
+        })
+        messageAlert.addAction(approveAction)
+        messageAlert.addAction(rejectAction)
+        present(messageAlert, animated: true, completion: nil)
+    }
+    
+    func approveAlertMethod(alert: Alert, typeFormID: Int, typeApproveID: Int, observation: String) {
+        
+        var approveAlert: ApproveAlert?
+        //let approveAlert: ApproveAlert?
+        approveAlert?.idAlerta = alert.alertaID
+        approveAlert?.sistemaID = alert.sistemaId
+        approveAlert?.empleadoID = alert.usRemitente
+        approveAlert?.empleadoIDAprobador = alert.usDestinatario
+        approveAlert?.tipoAprobacion = typeApproveID
+        approveAlert?.tipoFormulario = typeFormID
+        approveAlert?.observacion = observation
+        approveAlert?.Ip = "0.0.0.0"
+        approveAlert?.Titulo = nil
+        approveAlert?.DescripcionCorta = nil
+        approveAlert?.DescripcionCortaLarga = nil
+        
+        print (approveAlert as Any)
+        /*do{
+            let output = try JSONSerialization.jsonObject(with: alert, options: .allowFragments) as? [String:Any]
+        }
+        catch {
+            print (error)
+        }*/
+    }
+
 }

@@ -29,6 +29,7 @@ class Alert: Object {
     @objc dynamic var estadoAlertaId: Int = 0
     @objc dynamic var tipo: Int = 0
     //aumentadas para alertas por aprpbar
+    @objc dynamic var alertaIDApprove: Int = 0
     @objc dynamic var fechaLeido: String?
     @objc dynamic var usRemitente: Int = 0
     @objc dynamic var estadoID: Int = 0
@@ -62,6 +63,7 @@ class Alert: Object {
         self.estadoAlertaId = alert["EstadoAlertaId"] as? Int ?? 0
         self.tipo = alert["Tipo"] as? Int ?? 0
         //aumentadas para alertas por aprpbar
+        self.alertaIDApprove = alert["AlertaId"] as? Int ?? 0
         self.fechaLeido = alert["FechaLeido"] as? String
         self.usRemitente = alert["UsRemitente"] as? Int ?? 0
         self.estadoID = alert["EstadoId"] as? Int ?? 0

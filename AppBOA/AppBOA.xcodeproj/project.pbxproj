@@ -17,6 +17,7 @@
 		00A5B3AE215C8FCB00F457A3 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5B3AD215C8FCB00F457A3 /* Alert.swift */; };
 		00A5B3B0215D3A2200F457A3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5B3AF215D3A2200F457A3 /* AlertManager.swift */; };
 		00C4B0CA217007A200A956C5 /* AlertList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C4B0C9217007A200A956C5 /* AlertList.swift */; };
+		00FB0BC92176931E003762DB /* ApproveAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB0BC82176931E003762DB /* ApproveAlert.swift */; };
 		3001282D2171A03200C37257 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001282C2171A03200C37257 /* Login.swift */; };
 		3001282F2171A05500C37257 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001282E2171A05500C37257 /* UserInfo.swift */; };
 		3001D8A421670662007B2B86 /* Lista.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001D8A321670662007B2B86 /* Lista.swift */; };
@@ -60,6 +61,7 @@
 		00A5B3AD215C8FCB00F457A3 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		00A5B3AF215D3A2200F457A3 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		00C4B0C9217007A200A956C5 /* AlertList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertList.swift; sourceTree = "<group>"; };
+		00FB0BC82176931E003762DB /* ApproveAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveAlert.swift; sourceTree = "<group>"; };
 		3001282C2171A03200C37257 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		3001282E2171A05500C37257 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		3001D8A321670662007B2B86 /* Lista.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lista.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				9A06AD6921705DBE007EB192 /* AlertDetails.swift */,
 				3001282C2171A03200C37257 /* Login.swift */,
 				3001282E2171A05500C37257 /* UserInfo.swift */,
+				00FB0BC82176931E003762DB /* ApproveAlert.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				00A5B3AE215C8FCB00F457A3 /* Alert.swift in Sources */,
 				9A06AD6A21705DBE007EB192 /* AlertDetails.swift in Sources */,
 				00A5B3A6215B405000F457A3 /* APIManager.swift in Sources */,
+				00FB0BC92176931E003762DB /* ApproveAlert.swift in Sources */,
 				3001282F2171A05500C37257 /* UserInfo.swift in Sources */,
 				00A5B3A8215B41EE00F457A3 /* Constants.swift in Sources */,
 			);
