@@ -26,6 +26,10 @@ class HomeViewController: UITableViewController {
         loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+    }
+    
         override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
