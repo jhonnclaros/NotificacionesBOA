@@ -101,6 +101,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         controller.present(menuScene!, animated: true)
     }
     
+    func segueToMenuViewController() {
+        let menuScene = AppStoryboard.Menu.initialViewController()
+        self.window?.rootViewController = menuScene
+    }
+    
     func logout() {
         UserDefaults.standard.removeObject(forKey: "userSession")
         UserDefaults.standard.removeObject(forKey: "employeeIDSession")

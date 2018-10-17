@@ -64,7 +64,7 @@ class HomeViewController: UITableViewController {
     }
     
     @IBAction func menuAction(_ sender: Any) {
-        AppDelegate.getDelegate().presentMenuViewController(controller: self)
+        AppDelegate.getDelegate().segueToMenuViewController()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
