@@ -87,7 +87,7 @@ class APIManager {
         }
     }
     
-    static func approveAlert(_ data: [String: Any], success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
+    static func approveAlert(_ data: [String: Any], success:@escaping (_ result: ApproveAlert) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
         if !ReachabilityManager.shared.isNetworkAvailable {
             failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
             return
@@ -95,10 +95,10 @@ class APIManager {
         
         Alamofire.request(getApproveAlertEndpoint!, method: .post, parameters: data, encoding: JSONEncoding.default)
             .validate(statusCode: 200..<300)
-            .responseObject { (response: DataResponse<AlertList>) in
+            .responseObject { (response: DataResponse<ApproveAlert>) in
                 if response.error == nil {
-                    let alerts = response.result.value
-                    success(alerts!.lista)
+                    let resultApprove = response.result.value
+                    success(resultApprove!)
                 }
                 else{
                     failure(nil)

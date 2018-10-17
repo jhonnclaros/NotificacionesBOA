@@ -32,8 +32,6 @@ class ApproveAlertTableViewController: UITableViewController {
             MBProgressHUD.hide(for: self.view, animated: true)
             self.alerts = alerts
             self.tableView.reloadData()
-            
-            
         }, failure: { (error) in
             MBProgressHUD.hide(for: self.view, animated: true)
             var errorMessage = Constants.Error.InternalServerMessage
@@ -95,8 +93,7 @@ class ApproveAlertTableViewController: UITableViewController {
         return cell
         
     }
-    
-    
+
     @IBAction func approveAlertActionButton(_ sender: UIButton) {
         //print(alerts[sender.tag])
         showConfirmMessage(title: "", message: "Esta Seguro de Aprobar esta solicitud?", alert: alerts[sender.tag], typeFormID: 1, typeApproveID: 1, observation: "")
@@ -115,7 +112,7 @@ class ApproveAlertTableViewController: UITableViewController {
         }
         let rejectAction = UIAlertAction(title: "Cancelar", style: .default, handler: {(action) in
             //funcionalidad para cancelar sin hacer nada
-            
+            self.loadData()
         })
         messageAlert.addAction(approveAction)
         messageAlert.addAction(rejectAction)
@@ -123,28 +120,61 @@ class ApproveAlertTableViewController: UITableViewController {
     }
     
     func approveAlertMethod(alert: Alert, typeFormID: Int, typeApproveID: Int, observation: String) {
-        
-        var approveAlert: ApproveAlert?
-        //let approveAlert: ApproveAlert?
-        approveAlert?.idAlerta = alert.alertaID
-        approveAlert?.sistemaID = alert.sistemaId
-        approveAlert?.empleadoID = alert.usRemitente
-        approveAlert?.empleadoIDAprobador = alert.usDestinatario
-        approveAlert?.tipoAprobacion = typeApproveID
-        approveAlert?.tipoFormulario = typeFormID
-        approveAlert?.observacion = observation
-        approveAlert?.Ip = "0.0.0.0"
-        approveAlert?.Titulo = nil
-        approveAlert?.DescripcionCorta = nil
-        approveAlert?.DescripcionCortaLarga = nil
-        
-        print (approveAlert as Any)
-        /*do{
-            let output = try JSONSerialization.jsonObject(with: alert, options: .allowFragments) as? [String:Any]
+        let approveAlert = approveAlertSending(alert: alert, typeFormID: typeFormID, typeApproveID: typeApproveID, observation: observation)
+        let output = json(from:approveAlert as Any)
+        //print (output as Any)
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.label.text = "Procesando"
+        APIManager.approveAlert(generateApproveSending(json: output ?? ""), success: { (responseApprove: ApproveAlert) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if responseApprove.esValido == 1 {
+                self.loadData()
+            }
+            else{
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                AlertManager.showAlert(from: self, title: "AppBoa", message: responseApprove.descripcion ?? "", buttonStyle: .default)
+            }
+        }, failure: { (error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            var errorMessage = Constants.Error.InternalServerMessage
+            var titleMessage = Constants.Error.ErrorInternalServerTitle
+            if error != nil {
+                errorMessage = (error?.desc)!
+                titleMessage = "AppBoa"
+            }
+            AlertManager.showAlert(from: self, title: titleMessage, message: errorMessage, buttonStyle: .default)
+        })
+    }
+    
+    func approveAlertSending(alert: Alert, typeFormID: Int, typeApproveID: Int, observation: String) -> [String: Any] {
+        var body: [String: Any] = [:]
+        body["idAlerta"] = alert.alertaIDApprove
+        body["sistemaID"] = alert.sistemaId
+        body["empleadoID"] = alert.usRemitente
+        body["empleadoIDAprobador"] = alert.usDestinatario
+        body["tipoAprobacion"] = typeApproveID
+        body["tipoFormulario"] = typeFormID
+        body["observacion"] = observation
+        body["Ip"] = "0.0.0.0"
+        body["Titulo"] = nil
+        body["DescripcionCorta"] = nil
+        body["DescripcionCortaLarga"] = nil
+        return body
+    }
+    
+    func json(from object:Any) -> String? {
+        guard let data = try? JSONSerialization.data(withJSONObject: object, options: []) else {
+            return nil
         }
-        catch {
-            print (error)
-        }*/
+        return String(data: data, encoding: String.Encoding.utf8)
+    }
+    
+    func generateApproveSending(json: String) -> [String: Any] {
+        var body: [String: Any] = [:]
+        body["credenciales"] = ""
+        body["dato"] = json
+
+        return body
     }
 
 }
