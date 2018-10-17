@@ -156,9 +156,9 @@ class ApproveAlertTableViewController: UITableViewController {
         body["tipoFormulario"] = typeFormID
         body["observacion"] = observation
         body["Ip"] = "0.0.0.0"
-        body["Titulo"] = nil
-        body["DescripcionCorta"] = nil
-        body["DescripcionCortaLarga"] = nil
+        body["Titulo"] = "null"
+        body["DescripcionCorta"] = "null"
+        body["DescripcionCortaLarga"] = "null"
         return body
     }
     

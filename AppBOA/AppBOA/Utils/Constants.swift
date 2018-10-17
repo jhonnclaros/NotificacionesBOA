@@ -46,6 +46,13 @@ struct Constants {
             return "http://sms.obairlines.bo/BoAServiceItinerarioPrueba/servLogin.svc"
         }
         
+        static var ServiceBaseApproveServerProof: String {
+            if let baseURL = UserDefaults.standard.object(forKey: "servicesBaseURL") {
+                return baseURL as! String
+            }
+            return "http://sms.obairlines.bo/BoAServiceItinerarioPrueba/servAlerta.svc"
+        }
+        
         static func AuthorizationURL(accessCode: String) -> String {
             var url = URL(string: Constants.API.BaseServer)
             url = url?.appendingPathComponent("apis/v0/buyers/\(accessCode)/welcomes/scanit")

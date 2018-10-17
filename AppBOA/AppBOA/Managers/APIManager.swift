@@ -36,7 +36,7 @@ class APIManager {
     }
     
     fileprivate static var getApproveAlertEndpoint: String? {
-        return Constants.API.ServiceBaseServer + "/AprobarAlert"
+        return Constants.API.ServiceBaseApproveServerProof + "/AprobarAlerta"
     }
     
     fileprivate static var loginEndpoint: String? {
