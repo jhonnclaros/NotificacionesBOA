@@ -34,7 +34,7 @@ class AlertDetailsViewController: UIViewController {
     fileprivate func loadData() {
         title = "Detalle de la Alerta"
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.label.text = "Processing"
+        hud.label.text = "Procesando"
         APIManager.getAlertDetail(generateSending(), success: { (alertDetails: AlertDetails) in
             MBProgressHUD.hide(for: self.view, animated: true)
             self.dateLabel.text = alertDetails.fecha
