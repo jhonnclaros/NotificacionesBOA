@@ -36,6 +36,8 @@ class HomeViewController: UITableViewController {
     
     fileprivate func loadData() {
         title = "Alertas"
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 80
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         hud.label.text = "Procesando"
         let employeeID = UserDefaults.standard.string(forKey: "employeeIDSession")

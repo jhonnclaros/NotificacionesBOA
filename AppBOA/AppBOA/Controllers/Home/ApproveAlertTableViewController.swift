@@ -26,6 +26,8 @@ class ApproveAlertTableViewController: UITableViewController {
     
     func loadData() {
         title = "Aprobar Alertas"
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         hud.label.text = "Procesando"
         APIManager.getApproveAlertList(generateSending(), success: { (alerts: [Alert]) in
