@@ -12,5 +12,6 @@ target 'AppBOA' do
     pod 'ObjectMapper+Realm'
     pod 'ObjectMapperAdditions/Realm'
     pod 'ReachabilitySwift'
+    pod 'SwiftLint' 	
     
 end
