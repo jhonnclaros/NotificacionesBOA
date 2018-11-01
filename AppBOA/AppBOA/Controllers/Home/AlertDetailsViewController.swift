@@ -40,9 +40,17 @@ class AlertDetailsViewController: UIViewController {
             self.dateLabel.text = alertDetails.fecha
             self.originTitleLabel.text = alertDetails.sistemaOrigen
             self.titleLabel.text = alertDetails.titulo
-            self.stateLabel.text = alertDetails.estadoAlerta
-            self.readLabel.text = alertDetails.fechaLeido
-            self.descriptionLabel.text = alertDetails.descripcionCorta
+            //self.stateLabel.text = alertDetails.estadoAlerta
+            //self.readLabel.text = alertDetails.fechaLeido
+            self.stateLabel.text = "Leido"
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy hh:mm"
+            let result = formatter.string(from: date)
+            self.readLabel.text = result
+            var strDescripcion = alertDetails.descripcionCorta
+            strDescripcion = strDescripcion?.replacingOccurrences(of: "<br>", with: "\n")
+            self.descriptionLabel.text = strDescripcion
             self.requestInfo.text = alertDetails.descripcion
             
         }, failure: { (error) in

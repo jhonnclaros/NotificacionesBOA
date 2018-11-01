@@ -102,7 +102,9 @@ class HomeViewController: UITableViewController {
             cell.titleAlertNameLabel.text = fechaAlerta + " - " + tituloAlerta
         }
         cell.typeAlertNameLabel.text = alerts[indexPath.row].sistemaOrigen
-        cell.descriptionAlertNameLabel.text = alerts[indexPath.row].descripcionCorta
+        var strDescripcion = alerts[indexPath.row].descripcionCorta
+        strDescripcion = strDescripcion?.replacingOccurrences(of: "<br>", with: "\n")
+        cell.descriptionAlertNameLabel.text = strDescripcion
             
         return cell
         

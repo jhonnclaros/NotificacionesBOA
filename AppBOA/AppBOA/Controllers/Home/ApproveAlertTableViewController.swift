@@ -87,14 +87,15 @@ class ApproveAlertTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "alertApproveCell", for: indexPath) as! AlertApproveTableViewCell
-        
+        var strDescripcion = alerts[indexPath.row].descripcion
+        strDescripcion = strDescripcion?.replacingOccurrences(of: "<br>", with: "\n")
         let tituloAlerta: String = alerts[indexPath.row].titulo ?? ""
         let fechaAlerta: String = alerts[indexPath.row].fecha ?? ""
         let sistemaOrigen: String = alerts[indexPath.row].sistemaOrigen ?? ""
         cell.typeAlertLabel.text = fechaAlerta + " - " + sistemaOrigen
         cell.titleAlertLabel.text = tituloAlerta
         cell.shortDescriptionLabel.text = alerts[indexPath.row].descripcionCorta
-        cell.longDescriptionLabel.text = alerts[indexPath.row].descripcion
+        cell.longDescriptionLabel.text = strDescripcion
         cell.approveAlertButton.tag = indexPath.row
         cell.rejectAlertButton.tag = indexPath.row
         
