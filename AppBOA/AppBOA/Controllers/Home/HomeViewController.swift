@@ -20,9 +20,11 @@ class HomeViewController: UITableViewController {
     @IBOutlet var tableViewAlerts: UITableView!
     var alerts = [Alert]()
     var selectedAlert: Alert?
+    var reloadTimer: Timer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        reloadTimer = Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(reloadTableView), userInfo: nil, repeats: true)
         loadData()
     }
     
@@ -30,7 +32,7 @@ class HomeViewController: UITableViewController {
         loadData()
     }
     
-        override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
@@ -55,6 +57,10 @@ class HomeViewController: UITableViewController {
             }
             AlertManager.showAlert(from: self, title: titleMessage, message: errorMessage, buttonStyle: .default)
         })
+    }
+    
+    @objc func reloadTableView() {
+        loadData()
     }
     
     /*@IBAction func menuAction(_ sender: UIBarButtonItem) {

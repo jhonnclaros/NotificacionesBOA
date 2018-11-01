@@ -80,7 +80,7 @@
                                                     </switch>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zwm-0c-J9j">
                                                         <rect key="frame" x="102.5" y="171" width="130" height="44"/>
-                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.072188522422376486" green="0.26219348946938587" blue="0.43770914288549212" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="Gf5-5k-smL"/>
                                                             <constraint firstAttribute="width" constant="130" id="eXs-an-TVB"/>
@@ -129,7 +129,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.28627450980392155" green="0.29411764705882354" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.058823529409999999" green="0.20392156859999999" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="XcP-FF-blT" firstAttribute="top" secondItem="mFv-Yt-xlc" secondAttribute="bottom" constant="24" id="AY5-Fy-fVu"/>
                                             <constraint firstItem="mFv-Yt-xlc" firstAttribute="leading" secondItem="JN7-pH-8ho" secondAttribute="leading" constant="20" id="GNT-6v-0sj"/>

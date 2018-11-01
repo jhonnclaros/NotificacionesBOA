@@ -18,9 +18,11 @@ class ApproveAlertTableViewController: UITableViewController {
     
     var selectedAlert: Alert?
     var alerts = [Alert]()
+    var reloadTimer: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reloadTimer = Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(reloadTableView), userInfo: nil, repeats: true)
         loadData()
     }
     
@@ -44,6 +46,10 @@ class ApproveAlertTableViewController: UITableViewController {
             }
             AlertManager.showAlert(from: self, title: titleMessage, message: errorMessage, buttonStyle: .default)
         })
+    }
+    
+    @objc func reloadTableView() {
+        loadData()
     }
     
     func generateSending() -> [String: Any] {
