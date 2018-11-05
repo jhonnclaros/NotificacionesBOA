@@ -181,6 +181,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDm-Lh-TDZ">
                                         <rect key="frame" x="270" y="207.5" width="57" height="30"/>
                                         <state key="normal" title="Finalizar"/>
+                                        <connections>
+                                            <action selector="finalizeAlert:" destination="can-OH-ZoM" eventType="touchUpInside" id="OIv-Dc-rHe"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMn-J6-Ddl">
                                         <rect key="frame" x="71.5" y="125.5" width="35.5" height="17"/>
