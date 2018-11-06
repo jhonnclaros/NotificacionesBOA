@@ -35,23 +35,35 @@ class AlertDetailsViewController: UIViewController {
         title = "Detalle de la Alerta"
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         hud.label.text = "Procesando"
+        //llamada al servicio Lectura Alerta
+        APIManager.ReadAlert(generateSendingLectura(), success: { (readAlertResult: ReadAlert) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            //let codigo = readAlertResult.codigo;
+            
+        }, failure: { (error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            var errorMessage = Constants.Error.InternalServerMessage
+            var titleMessage = Constants.Error.ErrorInternalServerTitle
+            if error != nil {
+                errorMessage = (error?.desc)!
+                titleMessage = "AppBoa"
+            }
+            AlertManager.showAlert(from: self, title: titleMessage, message: errorMessage, buttonStyle: .default)
+        })
+        //llamada al servicio para obtener los datos de la alerta
         APIManager.getAlertDetail(generateSending(), success: { (alertDetails: AlertDetails) in
             MBProgressHUD.hide(for: self.view, animated: true)
             self.dateLabel.text = alertDetails.fecha
             self.originTitleLabel.text = alertDetails.sistemaOrigen
             self.titleLabel.text = alertDetails.titulo
-            //self.stateLabel.text = alertDetails.estadoAlerta
-            //self.readLabel.text = alertDetails.fechaLeido
-            self.stateLabel.text = "Leido"
-            let date = Date()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy hh:mm"
-            let result = formatter.string(from: date)
-            self.readLabel.text = result
+            self.stateLabel.text = alertDetails.estadoAlerta
+            self.readLabel.text = alertDetails.fechaLeido
             var strDescripcion = alertDetails.descripcionCorta
             strDescripcion = strDescripcion?.replacingOccurrences(of: "<br>", with: "\n")
             self.descriptionLabel.text = strDescripcion
-            self.requestInfo.text = alertDetails.descripcion
+            var strDescripcionLarga = alertDetails.descripcion
+            strDescripcionLarga = strDescripcionLarga?.replacingOccurrences(of: "<br>", with: "\n")
+            self.requestInfo.text = strDescripcionLarga
             
         }, failure: { (error) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -74,6 +86,14 @@ class AlertDetailsViewController: UIViewController {
         return body
     }
     
+    func generateSendingLectura() -> [String: Any] {
+        var body: [String: Any] = [:]
+        body["alertaID"] = selectedAlert?.alertaID
+        let usuario = UserDefaults.standard.string(forKey: "userSession")
+        body["usuario"] = usuario
+        return body
+    }
+    
     @IBAction func finalizeAlert(_ sender: Any) {
         showConfirmMessage(title: "", message: "Al finalizar la alerta desaparecera de la vista, esta seguro de continuar?", alertID: selectedAlert?.alertaID ?? 0, employeeID: selectedAlert?.empleadoID ?? 0)
     }
@@ -82,11 +102,9 @@ class AlertDetailsViewController: UIViewController {
         let messageAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let approveAction = UIAlertAction(title: "Aceptar", style: .default) { (action) in
-            //funcionalidad para afinalizar alerta
             self.finalizeAlertMethod(alertID: alertID, employeeID: employeeID)
         }
         let rejectAction = UIAlertAction(title: "Cancelar", style: .default, handler: {(action) in
-            //funcionalidad para cancelar sin hacer nada
             self.loadData()
         })
         messageAlert.addAction(approveAction)
@@ -97,16 +115,14 @@ class AlertDetailsViewController: UIViewController {
     func finalizeAlertMethod(alertID: Int, employeeID: Int) {
         let finAlert = finalizeAlertSending(alertID: alertID, employeeID: employeeID)
         let output = json(from:finAlert as Any)
-        //print (output as Any)
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         hud.label.text = "Procesando"
         APIManager.finalizeAlert(generateFinalizeAlertSending(json: output ?? ""), success: { (responseFinalizeAlert: FinalizeAlert) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if responseFinalizeAlert.esValido == 1 {
-                self.loadData()
+                self.navigationController?.popToRootViewController(animated: true)
             }
             else{
-                MBProgressHUD.hide(for: self.view, animated: true)
                 AlertManager.showAlert(from: self, title: "AppBoa", message: responseFinalizeAlert.descripcion ?? "", buttonStyle: .default)
             }
         }, failure: { (error) in

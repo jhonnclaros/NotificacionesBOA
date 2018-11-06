@@ -35,6 +35,10 @@ class APIManager {
         return Constants.API.ServiceBaseServer + "/GetDetalleAlerta"
     }
     
+    fileprivate static var readAlertEndpoint: String? {
+        return Constants.API.ServiceBaseServer + "/LecturaAlerta"
+    }
+    
     fileprivate static var getApproveAlertEndpoint: String? {
         return Constants.API.ServiceBaseApproveServerProof + "/AprobarAlerta"
     }
@@ -122,6 +126,25 @@ class APIManager {
                 if response.error == nil {
                     let alertdetails = response.result.value
                     success(alertdetails!)
+                }
+                else{
+                    failure(nil)
+                }
+        }
+    }
+    
+    static func ReadAlert(_ data: [String: Any], success:@escaping (_ readAlert: ReadAlert) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
+            return
+        }
+        
+        Alamofire.request(readAlertEndpoint!, method: .post, parameters: data, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseObject { (response: DataResponse<ReadAlert>) in
+                if response.error == nil {
+                    let readAlert = response.result.value
+                    success(readAlert!)
                 }
                 else{
                     failure(nil)

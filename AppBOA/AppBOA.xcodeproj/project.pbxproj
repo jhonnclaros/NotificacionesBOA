@@ -17,6 +17,7 @@
 		00A5B3AE215C8FCB00F457A3 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5B3AD215C8FCB00F457A3 /* Alert.swift */; };
 		00A5B3B0215D3A2200F457A3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5B3AF215D3A2200F457A3 /* AlertManager.swift */; };
 		00C4B0CA217007A200A956C5 /* AlertList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C4B0C9217007A200A956C5 /* AlertList.swift */; };
+		00F65F282191F7EF009BA7E1 /* ReadAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F65F272191F7EF009BA7E1 /* ReadAlert.swift */; };
 		00FB0BC92176931E003762DB /* ApproveAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB0BC82176931E003762DB /* ApproveAlert.swift */; };
 		3001282D2171A03200C37257 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001282C2171A03200C37257 /* Login.swift */; };
 		3001282F2171A05500C37257 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001282E2171A05500C37257 /* UserInfo.swift */; };
@@ -62,6 +63,7 @@
 		00A5B3AD215C8FCB00F457A3 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		00A5B3AF215D3A2200F457A3 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		00C4B0C9217007A200A956C5 /* AlertList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertList.swift; sourceTree = "<group>"; };
+		00F65F272191F7EF009BA7E1 /* ReadAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadAlert.swift; sourceTree = "<group>"; };
 		00FB0BC82176931E003762DB /* ApproveAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveAlert.swift; sourceTree = "<group>"; };
 		3001282C2171A03200C37257 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		3001282E2171A05500C37257 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				3001282E2171A05500C37257 /* UserInfo.swift */,
 				00FB0BC82176931E003762DB /* ApproveAlert.swift */,
 				30507C4A219155C10091B4C5 /* FinalizeAlert.swift */,
+				00F65F272191F7EF009BA7E1 /* ReadAlert.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				3001D8A421670662007B2B86 /* Lista.swift in Sources */,
 				00A5B3AA215BB86000F457A3 /* ReachabilityManager.swift in Sources */,
 				00A5B3AC215BB8DB00F457A3 /* ServerError.swift in Sources */,
+				00F65F282191F7EF009BA7E1 /* ReadAlert.swift in Sources */,
 				3006A1F1216EFAF9006F2FC9 /* ApproveAlertTableViewController.swift in Sources */,
 				9AD25DB221588E6E00DD2227 /* AppBOA.xcdatamodeld in Sources */,
 				3001282D2171A03200C37257 /* Login.swift in Sources */,
