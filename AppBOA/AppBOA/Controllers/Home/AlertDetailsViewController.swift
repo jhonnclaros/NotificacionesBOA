@@ -75,7 +75,7 @@ class AlertDetailsViewController: UIViewController {
     }
     
     @IBAction func finalizeAlert(_ sender: Any) {
-        showConfirmMessage(title: "", message: "Al finalizar la alerta desaparecera de la vista, esta seguro finalizarla?", alertID: selectedAlert?.alertaID ?? 0, employeeID: selectedAlert?.empleadoID ?? 0)
+        showConfirmMessage(title: "", message: "Al finalizar la alerta desaparecera de la vista, esta seguro de continuar?", alertID: selectedAlert?.alertaID ?? 0, employeeID: selectedAlert?.empleadoID ?? 0)
     }
     
     func showConfirmMessage(title: String, message: String, alertID: Int, employeeID: Int) {
@@ -100,14 +100,14 @@ class AlertDetailsViewController: UIViewController {
         //print (output as Any)
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         hud.label.text = "Procesando"
-        /*APIManager.approveAlert(generateApproveSending(json: output ?? ""), success: { (responseApprove: ApproveAlert) in
+        APIManager.finalizeAlert(generateFinalizeAlertSending(json: output ?? ""), success: { (responseFinalizeAlert: FinalizeAlert) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            if responseApprove.esValido == 1 {
+            if responseFinalizeAlert.esValido == 1 {
                 self.loadData()
             }
             else{
                 MBProgressHUD.hide(for: self.view, animated: true)
-                AlertManager.showAlert(from: self, title: "AppBoa", message: responseApprove.descripcion ?? "", buttonStyle: .default)
+                AlertManager.showAlert(from: self, title: "AppBoa", message: responseFinalizeAlert.descripcion ?? "", buttonStyle: .default)
             }
         }, failure: { (error) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -118,13 +118,13 @@ class AlertDetailsViewController: UIViewController {
                 titleMessage = "AppBoa"
             }
             AlertManager.showAlert(from: self, title: titleMessage, message: errorMessage, buttonStyle: .default)
-        })*/
+        })
     }
     
     func finalizeAlertSending(alertID: Int, employeeID: Int) -> [String: Any] {
         var body: [String: Any] = [:]
-        body["idAlerta"] = alertID
-        body["empleadoID"] = employeeID
+        body["AlertaId"] = alertID
+        body["EmpleadoId"] = employeeID
         body["EsItem"] = "False"
         body["ItemId"] = "0"
         return body
@@ -137,6 +137,12 @@ class AlertDetailsViewController: UIViewController {
         return String(data: data, encoding: String.Encoding.utf8)
     }
     
-    
+     func generateFinalizeAlertSending(json: String) -> [String: Any] {
+        var body: [String: Any] = [:]
+        body["credenciales"] = ""
+        body["dato"] = json
+
+        return body
+    }
     
 }

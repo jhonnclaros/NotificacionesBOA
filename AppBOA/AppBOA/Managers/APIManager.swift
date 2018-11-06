@@ -46,6 +46,10 @@ class APIManager {
     fileprivate static var userInfoEndpoint: String? {
         return Constants.API.ServiceBaseServerProof + "/GetUserInfo"
     }
+    
+    fileprivate static var finalizeAlertEndpoint: String? {
+        return Constants.API.ServiceBaseApproveServerProof + "/AlertaFinalizado"
+    }
 
     static func getListAlerts(empleadoID: String, success:@escaping (_ alerts: [Alert]) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
         if !ReachabilityManager.shared.isNetworkAvailable {
@@ -160,6 +164,27 @@ class APIManager {
                 if response.error == nil {
                     let userInfo = response.result.value
                     success(userInfo!)
+                }
+                else{
+                    failure(nil)
+                }
+        }
+    }
+    
+    static func finalizeAlert(_ data: [String: Any], success:@escaping (_ resultFinalizeAlert: FinalizeAlert) -> (), failure:@escaping (_ error: ServerError?) -> ()) {
+        if !ReachabilityManager.shared.isNetworkAvailable {
+            failure(ServerError(error: ["desc": Constants.Error.InternetConnectionError]))
+            return
+        }
+        //let parameters: Parameters = [ "username": username]
+        
+        Alamofire.request(finalizeAlertEndpoint!, method: .post, parameters: data, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseObject { (response: DataResponse<FinalizeAlert>) in
+                
+                if response.error == nil {
+                    let resultFinalizeAlert = response.result.value
+                    success(resultFinalizeAlert!)
                 }
                 else{
                     failure(nil)
