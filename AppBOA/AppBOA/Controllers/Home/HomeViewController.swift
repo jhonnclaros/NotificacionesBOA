@@ -32,7 +32,6 @@ class HomeViewController: UITableViewController {
         //self.tableViewAlerts.addSubview(self.refreshControl!)
         
         //self.tableViewAlerts.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
         loadData()
     }
     

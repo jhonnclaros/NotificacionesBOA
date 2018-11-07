@@ -28,7 +28,7 @@ class Alert: Object {
     @objc dynamic var fecha: String?
     @objc dynamic var estadoAlertaId: Int = 0
     @objc dynamic var tipo: Int = 0
-    //aumentadas para alertas por aprpbar
+    //aumentadas para alertas por aprobar
     @objc dynamic var alertaIDApprove: Int = 0
     @objc dynamic var fechaLeido: String?
     @objc dynamic var usRemitente: Int = 0
