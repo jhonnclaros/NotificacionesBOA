@@ -13,7 +13,6 @@ import Alamofire
 import AlamofireObjectMapper
 import Reachability
 
-
 class AlertDetailsViewController: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
