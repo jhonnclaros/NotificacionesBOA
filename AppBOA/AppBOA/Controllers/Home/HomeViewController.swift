@@ -21,22 +21,24 @@ class HomeViewController: UITableViewController {
     var alerts = [Alert]()
     var selectedAlert: Alert?
     var reloadTimer: Timer!
-    //var refreshControl: UIRefreshControl?
+    var refresher = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         reloadTimer = Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(reloadTableView), userInfo: nil, repeats: true)
-        // Refresh control add in tableview.
-        //self.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        //self.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        //self.tableViewAlerts.addSubview(self.refreshControl!)
-        
-        //self.tableViewAlerts.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        setupRefreshControl()
         loadData()
+    }
+    
+    func setupRefreshControl() {
+        refresher.attributedTitle = NSAttributedString(string: "Refrescar")
+        refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refresher)
     }
     
     @objc func refresh(_ sender: Any) {
         loadData()
+        refresher.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {

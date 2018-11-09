@@ -19,10 +19,12 @@ class ApproveAlertTableViewController: UITableViewController {
     var selectedAlert: Alert?
     var alerts = [Alert]()
     var reloadTimer: Timer!
+    var refresher = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         reloadTimer = Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(reloadTableView), userInfo: nil, repeats: true)
+        setupRefreshControl()
         loadData()
     }
     
@@ -101,6 +103,17 @@ class ApproveAlertTableViewController: UITableViewController {
         
         return cell
         
+    }
+    
+    func setupRefreshControl() {
+        refresher.attributedTitle = NSAttributedString(string: "Refrescar")
+        refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refresher)
+    }
+    
+    @objc func refresh(_ sender: Any) {
+        loadData()
+        refresher.endRefreshing()
     }
 
     @IBAction func approveAlertActionButton(_ sender: UIButton) {
