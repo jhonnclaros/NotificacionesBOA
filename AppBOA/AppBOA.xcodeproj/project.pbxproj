@@ -28,7 +28,7 @@
 		30507C4B219155C10091B4C5 /* FinalizeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30507C4A219155C10091B4C5 /* FinalizeAlert.swift */; };
 		305AE979216C543300E764AD /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AE978216C543300E764AD /* AlertTableViewCell.swift */; };
 		3071710121703716009B7DEF /* AlertApproveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071710021703716009B7DEF /* AlertApproveTableViewCell.swift */; };
-		3E51EE273C114CD2374E6E1E /* Pods_AppBOA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32CDDB585E74E638CD320E4C /* Pods_AppBOA.framework */; };
+		68938964B0BB6139DA18CA28 /* Pods_AppBOA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08151FC87DCADAEA50047F80 /* Pods_AppBOA.framework */; };
 		9A06AD6A21705DBE007EB192 /* AlertDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AD6921705DBE007EB192 /* AlertDetails.swift */; };
 		9AD25DAA21588E6D00DD2227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD25DA921588E6D00DD2227 /* AppDelegate.swift */; };
 		9AD25DAC21588E6D00DD2227 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD25DAB21588E6D00DD2227 /* ViewController.swift */; };
@@ -65,6 +65,7 @@
 		00C4B0C9217007A200A956C5 /* AlertList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertList.swift; sourceTree = "<group>"; };
 		00F65F272191F7EF009BA7E1 /* ReadAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadAlert.swift; sourceTree = "<group>"; };
 		00FB0BC82176931E003762DB /* ApproveAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveAlert.swift; sourceTree = "<group>"; };
+		08151FC87DCADAEA50047F80 /* Pods_AppBOA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppBOA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3001282C2171A03200C37257 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		3001282E2171A05500C37257 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		3001D8A321670662007B2B86 /* Lista.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lista.swift; sourceTree = "<group>"; };
@@ -74,7 +75,7 @@
 		30507C4A219155C10091B4C5 /* FinalizeAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeAlert.swift; sourceTree = "<group>"; };
 		305AE978216C543300E764AD /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		3071710021703716009B7DEF /* AlertApproveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertApproveTableViewCell.swift; sourceTree = "<group>"; };
-		32CDDB585E74E638CD320E4C /* Pods_AppBOA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppBOA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71480A46948E4546381395EB /* Pods-AppBOA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppBOA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppBOA/Pods-AppBOA.debug.xcconfig"; sourceTree = "<group>"; };
 		9A06AD6921705DBE007EB192 /* AlertDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetails.swift; sourceTree = "<group>"; };
 		9AD25DA621588E6D00DD2227 /* AppBOA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppBOA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD25DA921588E6D00DD2227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,8 +91,7 @@
 		9AD25DCF2158913D00DD2227 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9AD25DD22158913D00DD2227 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9AD25DD62158913D00DD2227 /* AppStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
-		F74A5F286D410FDA09F1452B /* Pods-AppBOA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppBOA.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppBOA/Pods-AppBOA.release.xcconfig"; sourceTree = "<group>"; };
-		F8C5AB60D264B3A1B260E96D /* Pods-AppBOA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppBOA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppBOA/Pods-AppBOA.debug.xcconfig"; sourceTree = "<group>"; };
+		C3E558D0883EBCBE35117D28 /* Pods-AppBOA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppBOA.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppBOA/Pods-AppBOA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E51EE273C114CD2374E6E1E /* Pods_AppBOA.framework in Frameworks */,
+				68938964B0BB6139DA18CA28 /* Pods_AppBOA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,15 +151,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		0B0AB4D38445E70AD3A19B34 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F8C5AB60D264B3A1B260E96D /* Pods-AppBOA.debug.xcconfig */,
-				F74A5F286D410FDA09F1452B /* Pods-AppBOA.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		305AE977216C540900E764AD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,14 +160,31 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		596F6FAB578E40D697FBFAF9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				71480A46948E4546381395EB /* Pods-AppBOA.debug.xcconfig */,
+				C3E558D0883EBCBE35117D28 /* Pods-AppBOA.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		827EBE43F5F74E55ECA84542 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				08151FC87DCADAEA50047F80 /* Pods_AppBOA.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9AD25D9D21588E6D00DD2227 = {
 			isa = PBXGroup;
 			children = (
 				9AD25DA821588E6D00DD2227 /* AppBOA */,
 				9AD25DC021588E7700DD2227 /* AppBOATests */,
 				9AD25DA721588E6D00DD2227 /* Products */,
-				0B0AB4D38445E70AD3A19B34 /* Pods */,
-				FB69350A251A9F6324C694DC /* Frameworks */,
+				596F6FAB578E40D697FBFAF9 /* Pods */,
+				827EBE43F5F74E55ECA84542 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -262,14 +270,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		FB69350A251A9F6324C694DC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				32CDDB585E74E638CD320E4C /* Pods_AppBOA.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -277,11 +277,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AD25DC621588E7700DD2227 /* Build configuration list for PBXNativeTarget "AppBOA" */;
 			buildPhases = (
-				E83424541AAEF994B8676C71 /* [CP] Check Pods Manifest.lock */,
+				A53B736A8D021A60013FC437 /* [CP] Check Pods Manifest.lock */,
 				9AD25DA221588E6D00DD2227 /* Sources */,
 				9AD25DA321588E6D00DD2227 /* Frameworks */,
 				9AD25DA421588E6D00DD2227 /* Resources */,
-				A45EF99E6A4B43740B4867DD /* [CP] Embed Pods Frameworks */,
+				4271518AC031342D88B98562 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -372,10 +372,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A45EF99E6A4B43740B4867DD /* [CP] Embed Pods Frameworks */ = {
+		4271518AC031342D88B98562 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AppBOA/Pods-AppBOA-frameworks.sh",
@@ -390,6 +392,8 @@
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
@@ -401,21 +405,25 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppBOA/Pods-AppBOA-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E83424541AAEF994B8676C71 /* [CP] Check Pods Manifest.lock */ = {
+		A53B736A8D021A60013FC437 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-AppBOA-checkManifestLockResult.txt",
 			);
@@ -533,7 +541,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = FY292WP342;
+				DEVELOPMENT_TEAM = JL898DM9YE;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -596,7 +604,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = FY292WP342;
+				DEVELOPMENT_TEAM = JL898DM9YE;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -618,7 +626,7 @@
 		};
 		9AD25DC721588E7700DD2227 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8C5AB60D264B3A1B260E96D /* Pods-AppBOA.debug.xcconfig */;
+			baseConfigurationReference = 71480A46948E4546381395EB /* Pods-AppBOA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -636,7 +644,7 @@
 		};
 		9AD25DC821588E7700DD2227 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F74A5F286D410FDA09F1452B /* Pods-AppBOA.release.xcconfig */;
+			baseConfigurationReference = C3E558D0883EBCBE35117D28 /* Pods-AppBOA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
