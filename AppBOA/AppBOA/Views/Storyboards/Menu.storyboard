@@ -12,6 +12,7 @@
         <!--Navigation Controller-->
         <scene sceneID="fIc-sM-SdQ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7aW-z0-lTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="e42-dk-dOQ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pbz-Dh-Z3l">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -21,13 +22,13 @@
                         <segue destination="Kko-pM-h7l" kind="relationship" relationship="rootViewController" id="SRN-BX-ogB"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7aW-z0-lTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1398" y="-155"/>
         </scene>
         <!--Menu-->
         <scene sceneID="Fmz-0G-VvV">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eJi-Ii-pzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="MenuTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kko-pM-h7l" customClass="MenuTableViewController" customModule="AppBOA" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qes-or-01k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -65,9 +66,8 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eJi-Ii-pzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-439" y="-155"/>
+            <point key="canvasLocation" x="-586" y="-155"/>
         </scene>
     </scenes>
 </document>

@@ -15,9 +15,6 @@ import Reachability
 
 
 class HomeViewController: UITableViewController {
-    
-    @IBOutlet weak var receiveView: UIView!
-    @IBOutlet var tableViewAlerts: UITableView!
     var alerts = [Alert]()
     var selectedAlert: Alert?
     var reloadTimer: Timer!
@@ -80,19 +77,11 @@ class HomeViewController: UITableViewController {
         AppDelegate.getDelegate().presentMenuViewController(controller: self)
     }*/
     
-    @IBAction func countAction(_ sender: UIButton) {
-        performSegue(withIdentifier: "CountSegue", sender: nil)
-    }
-    
-    @IBAction func receiveAction(_ sender: UIButton) {
-        performSegue(withIdentifier: "ReceiveSegue", sender: nil)
-    }
-    
-    @IBAction func menuAction(_ sender: Any) {
-        //AppDelegate.getDelegate().segueToMenuViewController()
+    @IBAction func menuAction(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Menu", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MenuTableViewController")
         self.present(vc, animated: true, completion: nil)
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

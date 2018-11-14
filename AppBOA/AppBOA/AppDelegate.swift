@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         loadInitialViewController()
@@ -96,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = homeScene
     }
     
-    func presentMenuViewController(controller: UIViewController) {
+    /*func presentMenuViewController(controller: UIViewController) {
         let menuScene = AppStoryboard.Menu.initialViewController()
         controller.present(menuScene!, animated: true)
     }
@@ -104,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func segueToMenuViewController() {
         let menuScene = AppStoryboard.Menu.initialViewController()
         self.window?.rootViewController = menuScene
-    }
+    }*/
     
     func logout() {
         UserDefaults.standard.removeObject(forKey: "userSession")
